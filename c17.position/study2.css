@@ -1,0 +1,32 @@
+/* main{overflow: hidden;} */
+.box{
+    text-align: center;
+}
+.box p{padding:200px 30%;}
+.box h2{
+    font-size:10vw;
+    position:sticky;
+    left:0;
+    top:100px;
+    border:1px solid red;
+}
+.imgbox{
+    background-color: ivory;
+    padding:160px 20px;
+    display: flex;
+    gap:40px;
+    align-items: flex-start;
+}
+.imgbox p{
+    padding:200px 30%;
+}
+.sticky-img{
+    width:600px;
+    position: sticky;
+    left:0;
+    top:0;
+
+}
+.sticky-img img{
+    width:100%;
+}

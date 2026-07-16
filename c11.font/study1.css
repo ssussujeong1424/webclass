@@ -1,0 +1,23 @@
+html{font-size: 16px;
+font-family: "페이퍼로지","어그로",'Inter',sans-serif;
+font-weight: 400;}
+.a{font-size: 2rem;}
+.b{font-size: 16px;}
+.b p{font-size: 1em;
+/*font-weight: 600;*/
+line-height: 300%;
+font-style: normal;}
+address{
+    font-style: normal;
+}
+.c{letter-spacing: -2px;
+word-spacing:20px}
+.d{white-space: pre-wrap;}
+.e{text-indent: 50px;
+text-transform: capitalize;
+word-break: break-all;}
+.g{text-align: justify;}
+.g span{text-decoration: line-through;}
+.i{font-family: "어그로";
+font-weight: 700;}
+.j{font-family: "Chewy", system-ui;}

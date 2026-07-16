@@ -1,0 +1,16 @@
+*{margin:0px;padding:0px;}
+h1,h2,h3,h4,h5,h6{
+    font-weight: inherit;
+    font-size: inherit;
+}
+address{
+    font-style: inherit;
+}
+ul,ol{
+    list-style: none;
+}
+a{color: inherit;text-decoration: inherit;}
+
+img{
+    max-width:100%
+}

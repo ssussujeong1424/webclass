@@ -1,0 +1,70 @@
+/* 기본 스타일 초기화 -> 내가 의도하지 않았는데 적용되어있는 스타일을 제거 */
+*{margin:0px;padding:0px;}
+h1,h2,h3,h4,h5,h6{
+    font-weight: inherit;
+    font-size: inherit;
+}
+address{
+    font-style: inherit;
+}
+ul,ol{
+    list-style: inherit;
+}
+a{color: inherit;text-decoration: inherit;}
+
+/* 공통 스타일 -> 공통적으로 적용되는 스타일을 설정 */
+
+html{font-family:"pretendard", "Noto Sans KR", sans-serif;
+font-size: 20px;}
+
+.title{
+    font-family: '풀무원';
+}
+main{
+    width:1200px;
+    margin:0 auto;
+}
+
+/* 스타일 */
+.banner{
+    height:250px;
+    background:url('../img/sub_vis01_02.jpg') no-repeat 50% 50% / cover;
+    margin-bottom: 50px;
+}
+main h1{
+    margin-bottom: 100px;
+    font-size:30px;
+    font-weight: 500;
+    background: url('../img/sub_tit_line.gif') repeat-x 0 50%;
+}
+main h1 span{
+    background-color: #fff;
+    padding-right: 20px;
+}
+main h2{
+    font-size:52px;
+    text-align: center;
+    line-height: 140%;
+    padding: 0 70px;
+}
+main h2 em{
+    font-style: normal;
+    color: #7eae4b;
+}
+.brand{
+    width:810px;
+    margin:0 auto;
+    box-sizing: border-box;
+    padding: 40px 90px 50px;
+    text-align: center;
+}
+.brand h3{
+    font-size: 35px;
+    margin-bottom: 25px;
+}
+.brand h3+p{
+    margin-bottom: 30px;
+}
+.brand p{
+    line-height: 140%;
+}

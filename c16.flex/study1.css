@@ -1,0 +1,28 @@
+*{margin:0;padding:0;}
+.box{
+    background-color: pink;
+    width:800px;
+    height:400px;
+    margin:0 auto;
+    display: flex;
+    /* flex-direction: column; */
+    /* flex-wrap: nowrap; 줄바꿈허용 wrap */
+    //*메인축:flex-start,center,flex-end, 교차축: 왼->오*//
+    /* flex-direction: row;  */
+    /*위->아래 column, row-reverse 오->왼, 왼->오(메인축:row) */
+    //* justify-content: space-between;  */
+    /*flex-start(기본값), center, flex-end, 순서는 메인축 디렉션 방향에 따라서 지점에 정렬됨*// 
+    //* align-items: stretch; * 교차축기준 //
+    /*stretch(기본값,늘어져있음), flex-start, flex-end*/
+    /* gap:10px; */
+    
+}
+.box section{
+    border:1px solid blue;
+    /* flex-shrink: 0;  남는거 나누는 비율*/
+    flex:1;
+}
+/* .a{flex-basis:200px;}
+.b{flex-basis:auto;flex-grow: 1; 남는거 더 가져오는 비율}
+.c{flex-basis:auto;flex-grow: 2;}
+.d{flex-basis:auto;} */

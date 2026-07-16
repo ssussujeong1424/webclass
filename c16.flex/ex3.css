@@ -1,0 +1,186 @@
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-display: swap;
+}
+
+*{margin:0px;padding:0px;}
+h1,h2,h3,h4,h5,h6{
+    font-weight: inherit;
+    font-size: inherit;
+}
+address{
+    font-style: inherit;
+}
+ul,ol{
+    list-style: inherit;
+}
+a{color: inherit;text-decoration: inherit;}
+
+html{
+    font-family: "pretendard", sans-serif;
+    font-size:20px;
+}
+
+.point-type{font-family: "Aboreto", system-ui;}
+
+
+
+.banner{
+    height:559px;
+    background: url("./ex3/배너.png") no-repeat 50% 50% / cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:white;
+    border-radius: 0 0 150px 150px;
+    position: relative;
+}
+
+.deco{
+    position: absolute;
+    left: 50%;
+    top: 95%;
+    z-index: -1;
+}
+
+.banner h1{
+font-weight: 400;
+font-size: 50px;
+line-height: 100%;
+text-transform: uppercase;
+}
+
+.container{
+    margin: 0 auto;
+    width:1600px;
+    padding-top: 200px;
+    position: relative;
+}
+
+.back{
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    margin-top:122px;
+    height:613px;
+}
+
+h2{
+font-size:150px;
+gap: 10px;
+font-weight: 400;
+line-height: 90%;
+text-align: center;
+text-transform: uppercase;
+}
+
+.container p{
+margin-top: 40px;
+font-weight: 400;
+font-size: 1rem;
+line-height: 140%;
+text-align: center;
+text-transform: uppercase;
+}
+
+.aa{
+    color:#700;
+}
+figure{
+    display: flex;
+    margin-top:100px;
+    gap:20px;
+    width: 1600px;
+
+}
+figure img{
+    object-fit: cover;
+    border-radius: 20px;
+    height:434px;
+    width: 790px;
+}
+
+.bottom{
+    margin-top: 50px;
+}
+h3{
+font-weight: 400;
+font-size: 2rem;
+line-height: 140%;
+letter-spacing: 0%;
+text-transform: uppercase;
+margin-bottom: 20px;
+}
+.bottom div{
+text-align: left;
+font-size: 1rem;
+line-height: 140%;
+text-transform: lowercase;
+margin-bottom: 10px;
+}
+
+.ss{
+font-weight: 700;
+font-style: Bold;
+font-size: 1rem;
+line-height: 140%;
+text-transform: none;
+}

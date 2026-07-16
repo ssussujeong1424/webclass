@@ -1,0 +1,43 @@
+*{margin:0px;padding:0px;}
+.a{
+    border:1px solid #000;
+    height:1500px;
+    background-color: aqua;
+    background-image: url("./img/green.jpg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 100px) 200px;
+    background-size: auto 50%;}
+.b{
+    border:1px solid #000;
+    height:1500px;
+    background:aqua url("./img/green.jpg") no-repeat calc(100% - 100px) 200px / auto 50%
+}
+.c{
+    border:1px solid red;
+    height:1000px;
+    background: purple url("./img/green.jpg")no-repeat 50% 50%/cover; /*contain*/
+    background-blend-mode: multiply; 
+    }
+.d{
+    border:1px solid red;
+    height:1000px;
+    background:
+    url("./img/green.jpg") no-repeat 50% 50% / 400px auto,
+    url("./img/cake1.jpg") no-repeat 50% 50% / 500px auto,
+    url("./img/cake2.jpg") no-repeat 50% 50% / 600px auto;
+}
+.e{
+    border:1px solid red;
+    height:1000px;
+   background:
+   url(./img/cake3.jpg) no-repeat 50% 50% / 800px auto, 
+   linear-gradient(30deg,red 40%,blue 60%,pink 80%); 
+}
+.e .box{
+    width:400px;
+    height:800px;
+    background-color:rgba(255,255,255,0.3);
+    margin:0 auto;
+    margin-top:100px;
+    backdrop-filter: blur(10px);
+}

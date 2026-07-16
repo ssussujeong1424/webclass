@@ -1,0 +1,38 @@
+@font-face {
+    font-family: "퍼즐";
+    src: url("./font/PuzzleSans.ttf");
+    font-weight: 100;
+}
+@font-face {
+    font-family: "페이퍼로지";
+    src: url("./font2/Paperlogy-7Bold.ttf");
+    font-weight: 700;
+}
+@font-face {
+    font-family: "페이퍼로지";
+    src: url("./font2/Paperlogy-5Medium.ttf");
+    font-weight: 500;}
+
+.h{font-family: "페이퍼로지";
+font-weight: 500;}
+
+@font-face {
+    font-family: "어그로";
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroL.woff') format('woff');
+    font-weight: 300;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "어그로";
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroM.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "어그로";
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: 700;
+    font-display: swap;
+}

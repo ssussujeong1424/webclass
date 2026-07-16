@@ -1,0 +1,169 @@
+*{margin:0;padding:0;}
+.box{
+    width:800px;
+    background:#bebebe;
+    margin:200px auto;
+}
+
+.a{background-color: red;
+}
+.b{background-color: green;
+}
+.c{background-color: blue;
+}
+.d{background-color: gold;
+}
+.e{background-color: pink;
+}
+
+.box2{
+    display:flex;
+}
+.box2 div{
+    width:100px;
+    height:100px;
+}
+
+.box2 .a{order:1;}
+.box2 .b{order:2;}
+.box2 .c{order:3;}
+.box2 .d{order:4;}
+.box2 .e{order:5;}
+
+.box3{display:flex;
+justify-content: flex-end;}
+
+.box3 div{width:100px;
+height:100px;}
+
+.box4{
+    height:300px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box4 div{
+    width:100px;
+    height:100px;
+}
+
+.box5{
+    height:300px;
+    display:flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.box5 div{
+    width:100px;
+    height:100px;
+}
+
+.box6{
+    height:300px;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.box6 div{
+    width:400px;
+    height:100px;
+}
+.box7{
+    display:flex;
+   justify-content: space-between;
+}
+
+.box7 div div{
+    width:100px;
+    height:100px;
+}
+.box8{
+    display:flex;
+    height: 300px;
+    justify-content: space-between;
+}
+.box8>div{
+    display: flex;
+}
+.box8>div div{
+    width:100px;
+    height:100px;
+}
+.rr{
+    flex-direction: row-reverse;
+}
+.box9{
+    display:flex;
+    height:300px;
+}
+.box9-1{
+    flex-basis: 500px;
+    display: flex;
+}
+.box9-1 div{
+    flex:1;
+}
+.box9-2{
+    flex-basis: 300px;
+}
+.box9-2 div{
+    height:100px;
+}
+
+.box10{
+    display:flex;
+    height:300px;}
+
+.box10 .a, .box10 .b{
+    width:250px;
+}
+.box10 .box-center{
+    width:300px;
+}
+.box10 .c{
+    height:100px;
+}
+.box10 .box-inner{
+    display: flex;
+}
+.box-inner div{
+    flex:1;
+    height:200px;
+}
+.box11{
+    display:flex;
+    height:300px;
+    justify-content: space-between;
+    align-items: center;
+}
+.box11>div{
+    width:200px;
+}
+.left{
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+.left div{
+    /* width: 200px; */
+    height: 100px;
+}
+.center{
+    display: flex;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.center div{
+    width:100px;
+    height:100px;
+}
+
+.box11 .e{
+    align-self: stretch;
+}
