@@ -1,0 +1,38 @@
+.a{
+    width:100px;
+    height:100px;
+    background-color: red;
+    position:fixed;
+    right:100px;
+    top:100px;
+}
+.b{
+    width:100px;
+    height:100px;
+    background-color: blue;
+    position:fixed;
+    right:40%;
+    bottom:20%;
+}
+.c{
+    width:100px;
+    height:100px;
+    background-color: green;
+    position:fixed;
+    left:15%;
+    top:10%;
+}
+.rotate{
+    animation:myrotate 2s linear 0s infinite normal;
+}
+
+.rotate:hover{
+    animation-play-state: paused;
+}
+
+@keyframes myrotate {
+    0%{transform: rotate(0deg);}
+    25%{background-color: orange;}
+    45%{transform: rotate(180deg)scale(1.5);}
+    100%{transform: rotate(360deg);}
+}

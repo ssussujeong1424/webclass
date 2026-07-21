@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    min-height: 100vh;
+    margin: 0;
+    place-items: center;
+    overflow: hidden;
+    background: #101828;
+    font-family: Arial, sans-serif;
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    border-block: 2px solid #ffffff;
+    background: #ffdf3f;
+    color: #101828;
+}
+
+.marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee 18s linear infinite;
+}
+
+.marquee__group {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 4rem;
+    padding: 1.25rem 2rem;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+.marquee__group span::before {
+    content: "✦";
+    margin-right: 4rem;
+}
+
+/* 동일한 두 묶음 중 정확히 첫 번째 묶음의 폭만큼 이동합니다. */
+@keyframes marquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee:hover .marquee__track {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+        animation: none;
+    }
+}

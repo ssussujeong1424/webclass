@@ -1,0 +1,64 @@
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 15% 20%, #ffffff 0 1px, transparent 2px),
+        radial-gradient(circle at 80% 15%, #dbe9ff 0 1px, transparent 2px),
+        radial-gradient(circle at 70% 75%, #ffffff 0 1px, transparent 2px),
+        radial-gradient(circle at 30% 70%, #dbe9ff 0 1px, transparent 2px),
+        linear-gradient(160deg, #020617 0%, #0b1b42 55%, #160c35 100%);
+    background-size: 180px 180px, 240px 240px, 310px 310px, 140px 140px, 100% 100%;
+}
+
+/* JavaScript creates 130 independent shooting stars. */
+.shooting-star {
+    position: fixed;
+    z-index: 1;
+    top: var(--top);
+    left: var(--left);
+    width: var(--length);
+    height: 1px;
+    border-radius: 999px;
+    pointer-events: none;
+    opacity: 0;
+    transform: rotate(45deg);
+    transform-origin: right center;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.5) 55%, #ffffff 92%);
+    box-shadow: 0 0 4px #ffffff, 0 0 12px #9ccaff;
+    animation: shooting-star var(--duration) var(--delay) linear infinite;
+}
+
+@keyframes shooting-star {
+    0%,
+    12% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(45deg) scaleX(0.25);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    48% {
+        opacity: 0;
+        transform: translate3d(125vw, 125vh, 0) rotate(45deg) scaleX(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(125vw, 125vh, 0) rotate(45deg) scaleX(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shooting-star {
+        animation: none;
+        opacity: 0;
+    }
+}
