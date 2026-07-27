@@ -1,0 +1,9 @@
+
+@media (min-width:2000px){
+    html{
+        font-size:24px;
+    }
+    .hero-banner{width:2000px;
+    margin:0 auto;
+}
+}

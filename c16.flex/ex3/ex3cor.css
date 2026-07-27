@@ -20,9 +20,10 @@ html{
     color: #fff;
 }
 .hero-banner h1{
-    font-size: 2.5rem;
+    font-size: 50px;
     line-height: 100%;
     text-transform: uppercase;
+    text-align: center;
 }
 .container{
     width:1600px;
@@ -53,19 +54,14 @@ html{
     color:#700;
 }
 
-.con2{
-    border:1px solid red;
-}
 
 .cafe-figure{
-    border:1px solid red;
     display:flex;
     gap: 1rem; 
     margin-bottom: 2.5rem;  
 }
 
 .cafe-figure figure{
-    border: 1px solid red;
     flex:1;
     line-height: 0;
 }
@@ -90,4 +86,59 @@ html{
 
 .con2 h3+p{
     margin-bottom: .5rem;
+}
+
+
+
+@media (max-width:1600px){
+    /* 가로스크롤이 생기는 지점 */
+   .container{
+    margin: 0 2rem;
+    width: auto;
+}
+}
+
+@media(max-width:1024px){
+        html{
+        font-size:18px;
+        }
+    
+        .cafe-figure figure img{
+            aspect-ratio: 467/434;
+    }
+}
+
+@media (max-width:768px){
+    /* 모바일 최대크기, 최소는 280px이상 */
+    html{
+        font-size:14px;
+    }
+   .container{
+    margin: 0 1rem;
+    }
+
+    .cafe-figure{
+    flex-direction: column;
+    }
+
+    .cafe-figure figure img{
+            aspect-ratio: 365/200;
+    }
+
+    .hero-banner{
+        font-size: 50px;
+    }
+    .con1 h2{
+        font-size: 50px;
+    }
+    .con1{
+    background: url(./Vector\ 1.png) no-repeat 50% -35px;
+}
+}
+
+@media(max-width:340px){
+
+        .con1 h2{
+        font-size: 44px;
+    }
 }

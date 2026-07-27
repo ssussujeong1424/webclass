@@ -73,19 +73,20 @@ a{color: inherit;text-decoration: inherit;}
     font-weight: 900;
     font-display: swap;
 }
+.point-type{font-family: "Aboreto", system-ui;}
+
 html{
-    font-family: "pretendard",sans-serif;
+    font-family: 'Pretendard',sans-serif;
     font-size: 20px;
 }
-.point-type{font-family: "Aboreto", system-ui;}
+
 .hero-banner{
-    border:1px solid red;
     height:599px;
     background: url("./반죽.png") no-repeat 50% 50% / cover;
+    color:#fff;
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: white;
+    align-items: center;
     margin-bottom: 6rem;
 }
 .hero-banner h1{
@@ -93,87 +94,64 @@ html{
     line-height: 100%;
     text-transform: uppercase;
 }
-
 .wrap{
-    width: 1600px;
-    margin: 0 auto;
+    width:1600px;
+    margin:0 auto;
 }
 .con1{
-    margin-bottom:3rem;
+    margin-bottom: 3rem;
 }
 .con1 h2{
     font-weight: 400;
     font-size: 4rem;
     line-height: 90%;
-    text-transform: uppercase; 
-    margin-bottom:4rem;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
 }
-p{
-    padding: 1rem 0;
-    border-top: 1px solid #000;
+.con1 p{
+    padding:1rem 0;
+    border-top: 1px solid #000000;
     text-align: right;
 }
 figure.coffee img{
     width:1000px;
     height:430px;
-    object-fit:cover;
+    object-fit: cover;
     margin-bottom: 1rem;
 }
 
-/* 주석처리
 
-html{font-family:"pretendard", "
-Aboreto", sans-serif;
-font-size: 20px;}
-
-main{
-    width:1920px;
-    margin:0 auto;
+@media (max-width:1600px){
+    /* 가로스크롤이 생기는 지점 */
+    .wrap{
+    width: auto;
+    margin: 0 2rem;}
 }
 
-.hero-banner{
-    height: 599px;
-    background:url(./반죽.png) no-repeat 50% 50% / cover;
-    position: relative;
+@media(max-width:1024px){
+        html{
+        font-size:18px;
+        }
+        figure.coffee img {
+            height:350px;
+    /* width: 100%;
+    height: auto;
+    aspect-ratio: 100/43; */
+    }
 }
 
-h1{
-    text-align: center;
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+@media (max-width:768px){
+    /* 모바일 최대크기 */
+    html{
+        font-size:14px;
+    }
+    .wrap{
+    margin: 0 1rem;}
+    figure.coffee img {
+    height: 200px;
+    }
 }
-.wrap{
-    border: 1px solid red;
-    width: 1600px;
-    margin: 120px 160px 0;
-}
-.para{
-    border-top: 1px solid blue;
-    padding: 20px 0;
-    text-align: right;
-}
-.figure{
-    border: 1px solid pink;
-    width:1600px;
-    margin-top: 60px;
-    margin-left: 160px;
-    margin-right: 160px;
-}
-.inner-figure img{
-    width:1000px;
-    height:430px;
-    object-fit: cover;
-    display: block;
-}
-.figcaption{
-    margin-top:20px;
-    line-height: 140%;
-}
-span{
-font-weight: 800;
-font-size: 1rem;
-line-height: 140%;
+
+img{
+    max-width:100%
 }

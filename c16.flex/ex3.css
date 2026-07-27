@@ -74,6 +74,11 @@ ul,ol{
 }
 a{color: inherit;text-decoration: inherit;}
 
+img{
+    max-width:100%
+}
+
+
 html{
     font-family: "pretendard", sans-serif;
     font-size:20px;
@@ -103,7 +108,7 @@ html{
 
 .banner h1{
 font-weight: 400;
-font-size: 50px;
+font-size: 2rem;
 line-height: 100%;
 text-transform: uppercase;
 }
@@ -111,7 +116,7 @@ text-transform: uppercase;
 .container{
     margin: 0 auto;
     width:1600px;
-    padding-top: 200px;
+    padding-top: 10rem;
     position: relative;
 }
 
@@ -124,7 +129,7 @@ text-transform: uppercase;
 }
 
 h2{
-font-size:150px;
+font-size:7.5rem;
 gap: 10px;
 font-weight: 400;
 line-height: 90%;
@@ -183,4 +188,41 @@ font-style: Bold;
 font-size: 1rem;
 line-height: 140%;
 text-transform: none;
+}
+
+
+@media (max-width:1600px){
+    /* 가로스크롤이 생기는 지점 */
+   .container{
+    margin: 0 2rem;
+    width: auto;
+}
+}
+
+@media(max-width:1024px){
+        html{
+        font-size:18px;
+        }
+    
+         figure img{
+            height:434px;
+    }
+}
+
+@media (max-width:768px){
+    /* 모바일 최대크기 */
+    html{
+        font-size:14px;
+    }
+   .container{
+    margin: 0 1rem;
+    width: auto;}
+    figure{
+    display: flex;
+    flex-direction: column;
+    }
+    figure img{
+            height:200px;
+    }
+
 }

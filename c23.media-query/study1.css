@@ -1,0 +1,28 @@
+.wrap{
+    background-color: beige;
+    transition:all 1s ease 0s;
+}
+
+@media (min-width:2000px){
+    /* 화면너비가 2000픽셀 이상인 경우 */
+}
+
+@media (min-width:800px) and (max-width:1500px){
+    body{background-color: gainsboro;}
+}
+
+@media (max-width:1024px){
+    /* 화면너비가 최대 1024픽셀인 경우 적용되는 스타일*/
+    /* =화면너비가 1024픽셀 이하인 경우 */
+    .wrap{
+    background-color: red;}
+}
+@media (max-width:768px){
+    /* 화면너비가 768픽셀 이하인 경우 */
+      .wrap{
+    background-color: blue;} 
+}
+@media (max-width:480px){
+    .wrap{
+    background-color: green;} 
+}
