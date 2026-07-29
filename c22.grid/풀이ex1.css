@@ -159,37 +159,3 @@ main{
         font-size: 1.6rem;
     }
 }
-
-/*  
-    .cafe-figure.asr{
-    flex-direction: column;
-}
-
-.cafe-figure.asr figure{
-        flex: none;
-        width:100%;
-          aspect-ratio: 365 / 150;
-        min-height:0;
-}
-
-.top{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:1rem;
-}
-
-.top figure {
-    min-height: 0;
-}
-
-    .top figure:nth-child(1),
-    .top figure:nth-child(2){
-        aspect-ratio:175 / 150;
-    }
-
-    .top figure:nth-child(3){
-        grid-column:1 / span 2;
-        aspect-ratio:365 / 150;
-    }
-}
- */
