@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼항연산자
+    </title>
+</head>
+<body>
+    <script>
+        5>3?"가":"나" //'가'
+        !(5<3)?'가':'나' //'가'
+        10!==10?'다':'라' // 라'
+        100?'a':'b' // 'a'
+        let a;
+        !a?'b':'c' // 'b'
+        
+        console.log((10-2?1:2)?2:0) // 2 
+        console.log(30<20?'A':5===5?'C':'D') // C
+
+        let name=prompt("이름을 입력하시오")
+        name = name?name:'아무개'
+        console.log(name)
+        document.write(`${name}님 환영합니다.`)
+
+        
+    </script>
+</body>
+</html>

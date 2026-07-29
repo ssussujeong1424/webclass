@@ -1,0 +1,162 @@
+@charset "utf-8";
+
+:root {
+    --ink: #1d1b18;
+    --paper: #f5f0e8;
+    --rule: #c9c0b4;
+    --accent: #c43e25;
+    --soft-accent: #edc8bc;
+    --serif: "Noto Serif KR", "Nanum Myeongjo", Georgia, "Times New Roman", serif;
+    --sans: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    min-width: 320px;
+    margin: 0;
+    padding: 48px 20px;
+    color: var(--ink);
+    font-family: var(--sans);
+    background-color: var(--paper);
+    background-image: radial-gradient(rgba(29, 27, 24, .08) .65px, transparent .65px);
+    background-size: 7px 7px;
+}
+
+.wrap {
+    width: min(100%, 760px);
+    margin: 0 auto;
+    padding: clamp(30px, 7vw, 68px);
+    border-top: 9px solid var(--ink);
+    background: rgba(255, 253, 249, .92);
+    box-shadow: 12px 12px 0 rgba(29, 27, 24, .12);
+}
+
+h1 {
+    max-width: 9em;
+    margin: 0 0 24px;
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 9vw, 5.8rem);
+    font-weight: 900;
+    line-height: .91;
+    letter-spacing: -.095em;
+}
+
+h1::after {
+    display: block;
+    width: 72px;
+    height: 8px;
+    margin-top: 26px;
+    content: "";
+    background: var(--accent);
+}
+
+.wrap > p {
+    margin: 0 0 38px;
+    color: #6d655d;
+    font-family: var(--serif);
+    font-size: .98rem;
+    line-height: 1.7;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: minmax(86px, .7fr) 1.3fr;
+    margin: 0;
+    border-top: 1px solid var(--ink);
+}
+
+dt, dd {
+    min-width: 0;
+    margin: 0;
+    padding: 17px 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+dt {
+    color: #766d63;
+    font-family: var(--serif);
+    font-size: .88rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+
+dd {
+    font-family: var(--serif);
+    font-size: 1.22rem;
+    font-weight: 800;
+    text-align: right;
+}
+
+dt:nth-of-type(4), dd:nth-of-type(4) {
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+/* JavaScript에서 --bmi-position 값(0%~100%)을 바꾸면 막대 위치를 조절할 수 있습니다. */
+.graph {
+    --bmi-position: 44%;
+    position: relative;
+    height: 132px;
+    margin-top: 50px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--ink);
+    background:
+        linear-gradient(to right,
+            #b9d8e8 0 32%,
+            #a9d8bd 32% 56%,
+            #f3d58c 56% 72%,
+            #eab3a9 72% 100%) bottom / 100% 28px no-repeat,
+        repeating-linear-gradient(to top, transparent 0 31px, rgba(29, 27, 24, .12) 31px 32px);
+}
+
+.graph span {
+    position: absolute;
+    bottom: 0;
+    height: 28px;
+    overflow: hidden;
+    color: #3e3934;
+    font-size: clamp(.56rem, 2vw, .72rem);
+    font-weight: 700;
+    line-height: 28px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.graph span:nth-child(1) { left: 0; width: 32%; }
+.graph span:nth-child(2) { left: 32%; width: 24%; }
+.graph span:nth-child(3) { left: 56%; width: 16%; }
+.graph span:nth-child(4) { left: 72%; width: 28%; }
+
+.graph .point {
+    position: absolute;
+    bottom: -28px;
+    z-index: 1;
+    padding: 3px 5px;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: clamp(.62rem, 2vw, .78rem);
+    line-height: 1;
+    transform: translateX(-50%);
+    background: #fffdf9;
+}
+
+.graph .point::after {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 1px;
+    height: 8px;
+    content: "";
+    background: var(--ink);
+}
+
+.graph .point-1 { left: 32%; }
+.graph .point-2 { left: 56%; }
+.graph .point-3 { left: 72%; }
+
+@media (max-width: 480px) {
+    body { padding: 24px 12px; }
+    .wrap { padding: 30px 24px 48px; }
+    h1 { font-size: 3.1rem; }
+}

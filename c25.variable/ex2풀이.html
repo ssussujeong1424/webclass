@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ex풀이.css">
+</head>
+<body>
+        <script>
+            let userName = prompt("이름")
+            let userw=Number(prompt("체중(kg)"))
+            let userH=Number(prompt("키(cm)"))
+            let mbi=(userw/((userH/100)**2)).toFixed(2)
+        document.write(`
+        <div class="wrap">
+        <h1>나의 체질량지수(BMI)</h1>
+        <p></p>
+        <dl>
+            <dt>이름</dt>
+            <dd>${userName}</dd>
+            <dt>체중</dt>
+            <dd>${userw}</dd>
+            <dt>키</dt>
+            <dd>${userH}</dd>
+            <dt>bmi지수</dt>
+            <dd>${mbi}</dd>
+        </dl>
+        <div class="graph">
+            <span>저체중</span>
+            <span>정상</span>
+            <span>과체중</span>
+            <span>비만</span>
+            <b class="point point-1">18.5</b>
+            <b class="point point-2">23</b>
+            <b class="point point-3">25</b>
+        </div>
+    </div>
+  `)  
+</script>
+</body>
+</html>

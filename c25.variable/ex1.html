@@ -15,6 +15,7 @@
         let sS = Number(prompt('당신의 사회점수를 입력해주세요'))
         let sa = sK+sE+sM+sS
         let sv =(sa/4).toFixed(2)
+        let grade = Number(sv)>=90?'1등급':Number(sv)>=80?'2등급':Number(sv)>=70?'3등급':Number(sv)>=60?'4등급':'5등급'
 
         document.write(`    <table border="1">
         <caption>${userName}님의 성적표</caption>
@@ -46,8 +47,14 @@
             <th>평균</th>
             <td>${sv}</td>
         </tr>
+
+
+        <tr>
+            <th>등급</th>
+            <td>${grade}</td>
+        </tr>
     </table>`)
     </script>
-    
+
 </body>
 </html>

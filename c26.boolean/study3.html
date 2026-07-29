@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>논리연산자</title>
+</head>
+<body>
+    <h1>&&(and)연산자</h1>
+    <p>
+        &&연산자는 '그리고'라고 해석하며 전체의 경우가 true일 때 true로 계산을 하고 어느 한 경우라도 false라면 전체를 false로 계산한다.
+    </p>
+    <p>
+        왼쪽부터 계산을 하는데 false가 나오는 순간 계산이 끝남
+    </p>
+    <script>
+        console.log(10>2 && 5>2) // true
+        5>1 && 5>2 && 5<3 // false
+        console.log(5 && 0 && 5>4) // 0
+        let a = 0 && 5 && 4 
+        console.log(a) // 0
+    </script>
+        <h1>|| (or)연산자</h1>
+        <p>또는 이라고 해석</p>
+        <p>여러 경우 중 하나라도 true라면 전체를 true로 계산</p>
+        <p>왼쪽부터 true가 나올 때 까지 계산</p>
+        <script>
+            console.log(10<2|| 3>10|| 4>2) // true
+            let b = 0 || !10 || 20
+            console.log(b) // 20
+            ((0||"good"||null)+(!!0||"day".length||40)).length
+            ("good"+3).length // 4
+        </script>
+
+        //&&
+처음 만나는 falsy 값을 반환
+모두 truthy이면 마지막 값을 반환
+        //||
+처음 만나는 truthy 값을 반환
+모두 falsy이면 마지막 값을 반환
+</body>
+</html>
