@@ -13,7 +13,7 @@
             let kg = Number(prompt('몸무게(kg)를 입력해 주세요'))
             let cm = Number(prompt('키(cm)를 입력해 주세요'))
             let bmi = kg / ((cm / 100) ** 2)
-            let result = Number(bmi)>=25?confirm('당신의 지수는 비만입니다'):Number(bmi)>=23?confirm('당신의 지수는 과체중입니다'):Number(bmi)>=18.5?confirm('당신의 지수는 정상입니다'):confirm('당신의 지수는 저체중입니다.')
+            let result = bmi>25?'비만':bmi>=23?'과체중':bmi>18.5?'정상':'저체중'
 
             document.write(`
                 <section class="bmi-card">
@@ -52,8 +52,13 @@
                         <tfoot>
                             <tr><th colspan="4" scope="row">체중</th></tr>
                         </tfoot>
+                                        <div>
+                    <dt>상태</dt>
+                    <dd>${result}</dd>
+                </div>
                     </table>
                 </section>
+
             `)
         </script>
     </main>

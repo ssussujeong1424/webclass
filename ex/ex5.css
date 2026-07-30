@@ -15,125 +15,199 @@ img{
     max-width:100%
 }
 
+.pt{
+    font-family: "Aboreto", system-ui;
+}
+
 html{
     font-size: 20px;
     font-family: 'Pretendard'; /*끌어오기*/
 }
 
 .container{
-    width:1920px;
-    margin:0 auto;
+    width:auto;
+    max-width:1920px;
 }
+
 .titlebox{
-    width:1600px;
-    padding: 0 8rem;
-    box-sizing: border-box;
-    text-align: center;
+    width:min(1600px, calc(100% - 16rem));
+    text-align:center;
+    margin:0 auto 5rem;
+    padding-top:8rem;
 }
 
+h1.pt{
+font-weight: 400;
+font-size: 2.5rem;
+text-transform: uppercase;
+}
 
-/* 
-.pt{
-    font-family: "Aboreto", system-ui;
+.titlebox p{
+margin-top: 1rem;
+font-weight: 400;
+font-size: 1rem;
+line-height: 140%;
+text-transform: uppercase;
 }
-html{
-    font-size: 20px;
-    font-family: 'Pretendard';
-}
-main{
-    padding-top:6rem;
-    background: url(./bg.svg) no-repeat 50% 0% / max(100%, 1200px) auto;
-}
-.wrap{
-    width:1600px;
-    margin:0 auto;
-}
+
 .banner{
-    height:599px;
-    background: url(./배너.jpg) no-repeat 50% 50% / cover;
-    border-radius: 2.5rem;
-    color:#fff;
+    height:35rem;
+    background: url(./ex5.banner.jpg) no-repeat 50% 50% / cover;
+    width: 100%;
+    margin-bottom: 5rem;
     display:flex;
     justify-content: center;
-    align-items: center;
-}
-.banner h1{
-    font-size:2.5rem;
-    line-height: 100%;
-    text-transform: uppercase;
+    align-items: flex-end;
 }
 
-.title{
+h2.pt{
     font-size: 7.5rem;
+    color: #fff;
+    font-weight: 400;
     line-height: 90%;
     text-transform: uppercase;
-    margin-top: 6rem;
-    margin-bottom: 2.4rem;
 }
 
-.title+*{
-        margin-bottom: 2.4rem;
+h2.pt span{
+    display:inline;
+}
+.signature-list{
+    width:min(1600px, calc(100% - 16rem));
+    margin:0 auto;
 }
 
-.cafe-figure{
-    display: flex;
+.subtitle{
+    margin-bottom: 3.5rem;
+}
+
+h3.pt{
+font-weight: 400;
+font-size: 2rem;
+line-height: 140%;
+letter-spacing: 0%;
+text-align: center;
+margin-bottom: 1rem;
+}
+
+.subtitle p{
+font-weight: 400;
+line-height: 140%;
+text-align: center;
+}
+
+.ul{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
     gap:1rem;
 }
 
-.cafe-figure figure{
-    flex:1;
-    aspect-ratio: 1/1;
+.list{
+    display:flex;
+    flex-direction:column;
 }
 
-.cafe-figure.asr figure{
-    flex:1;
-    aspect-ratio: 790/434;
-}
-
-.cafe-figure figure img{
+.list img{
     width:100%;
-    height:100%;
-    object-fit: cover;
-    border-radius: 1rem;
+    aspect-ratio: 1/1;
+    object-fit:cover;
+    border-radius:1rem;
+    display:block;
 }
 
-.caption{
-    margin: 2rem 0;
-    text-align: center;
+.text{
+    margin-top:1rem;
+
 }
 
-.caption h3{
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    line-height: 140%;
+.title{
+font-weight: 700;
+line-height: 140%;
+text-transform: capitalize;
+margin-bottom: 0.5rem;
 }
 
+.context{
+font-weight: 400;
+line-height: 140%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; 
+    overflow: hidden;
 
+}
+
+@media(max-width:1024px){
+    body{
+    background:red;
+    }
+    html{
+    font-size:18px;
+    }
+    h2.pt{
+    font-size: 4.4rem;
+    }
+}
+
+@media(max-width:768px){
+    body{
+        background:blue;
+    }
+    html{
+        font-size:14px;
+    }
+    .titlebox{
+    width:min(385px, calc(100% - 2rem));
+    text-align:center;
+    margin:0 auto 5rem;
+    padding-top:8rem;
+    }
+    .banner{
+        display:flex;
+    justify-content: center;
+        align-items: center;
+    }
+    h2.pt{
+    font-size:3.5rem;
+    }
+    .ul{
+        grid-template-columns:1fr;
+    }
+    h2.pt span{
+        display:block;
+    }
+}
+
+/*  
 
 @media(max-width:1600px){
-        .wrap{
-        margin: 0 2rem;
-        width: auto;
-        }
+      .titlebox{
+    text-align: center;
+    margin: 2rem;
+    padding-top: 8rem;
+}
 }
 
 
 
 @media(max-width:1024px){
-        html{
-        font-size:18px;
-        }
-        .title{
-    font-size: 4.4rem;}
-        .cafe-figure.asr figure{
-    flex:1;
-    aspect-ratio: 467/434;
-    }  
 
-
+    body{
+        background:red;
+    }
+    html{
+    font-size:18px;
+    }
+    h2.pt{
+    top: 384px;
+    left: 0px;
+    margin: 0 2rem;
+    z-index: 2;
+    font-size: 4.4rem;
 }
 
+} */
 
+/* 
 
 @media (max-width:768px){
     html{
@@ -175,4 +249,4 @@ main{
     .banner h1{
         font-size: 1.6rem;
     }
-} */
+}  */ */
