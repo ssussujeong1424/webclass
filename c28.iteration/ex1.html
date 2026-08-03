@@ -5,173 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>우리반 명단</title>
     <script src="./js/classroom.js"></script>
-    <link rel="stylesheet" href="./css/ex1.css"
+    <link rel="stylesheet" href="./css/ex1.css">
 </head>
 <body>
     <h1>우리반 명단</h1>
     <ul class="classmate">
-        <li>
+        <script>
+            for(let i=0 ; i<classroom.length ; i++){
+                let hobbies = '';
+                for(let j=0 ; j<classroom[i][4].length; j++){
+                    hobbies = hobbies + `<span>#${classroom[i][4][j]}</span>`
+                }
+
+
+
+                            document.write(`<li>
             <figure>
-                <img src="./img/배수정.png" alt="배수정 프사">
+                <img src="./img/${classroom[i][5]}" alt="${classroom[i][0]} 프사">
             </figure>
             <dl>
                 <dt>이름</dt>
-                <dd>배수정</dd>
+                <dd>${classroom[i][0]}</dd>
                 <dt>성별</dt>
-                <dd>38</dd>
+                <dd>${classroom[i][2]}</dd>
+                <dt>나이</dt>
+                <dd>${classroom[i][1]}</dd>
                 <dt>결혼</dt>
-                <dd>미혼</dd>
+                <dd>${classroom[i][3]?"기혼":"미혼"}</dd>
                 <dt>취미</dt>
                 <dd>
-                    <span>독서하기</span>
-                    <span>공연보기</span>
+                ${hobbies}
                 </dd>
             </dl>
-        </li>
-                <li>
-            <figure>
-                <img src="./img/배수정.png" alt="배수정 프사">
-            </figure>
-            <dl>
-                <dt>이름</dt>
-                <dd>배수정</dd>
-                <dt>성별</dt>
-                <dd>38</dd>
-                <dt>결혼</dt>
-                <dd>미혼</dd>
-                <dt>취미</dt>
-                <dd>
-                    <span>독서하기</span>
-                    <span>공연보기</span>
-                </dd>
-            </dl>
-        </li>
-                <li>
-            <figure>
-                <img src="./img/배수정.png" alt="배수정 프사">
-            </figure>
-            <dl>
-                <dt>이름</dt>
-                <dd>배수정</dd>
-                <dt>성별</dt>
-                <dd>38</dd>
-                <dt>결혼</dt>
-                <dd>미혼</dd>
-                <dt>취미</dt>
-                <dd>
-                    <span>독서하기</span>
-                    <span>공연보기</span>
-                </dd>
-            </dl>
-        </li>
-                <li>
-            <figure>
-                <img src="./img/배수정.png" alt="배수정 프사">
-            </figure>
-            <dl>
-                <dt>이름</dt>
-                <dd>배수정</dd>
-                <dt>성별</dt>
-                <dd>38</dd>
-                <dt>결혼</dt>
-                <dd>미혼</dd>
-                <dt>취미</dt>
-                <dd>
-                    <span>독서하기</span>
-                    <span>공연보기</span>
-                </dd>
-            </dl>
-        </li>
-                <li>
-            <figure>
-                <img src="./img/배수정.png" alt="배수정 프사">
-            </figure>
-            <dl>
-                <dt>이름</dt>
-                <dd>배수정</dd>
-                <dt>성별</dt>
-                <dd>38</dd>
-                <dt>결혼</dt>
-                <dd>미혼</dd>
-                <dt>취미</dt>
-                <dd>
-                    <span>독서하기</span>
-                    <span>공연보기</span>
-                </dd>
-            </dl>
-        </li>
-                <li>
-            <figure>
-                <img src="./img/배수정.png" alt="배수정 프사">
-            </figure>
-            <dl>
-                <dt>이름</dt>
-                <dd>배수정</dd>
-                <dt>성별</dt>
-                <dd>38</dd>
-                <dt>결혼</dt>
-                <dd>미혼</dd>
-                <dt>취미</dt>
-                <dd>
-                    <span>독서하기</span>
-                    <span>공연보기</span>
-                </dd>
-            </dl>
-        </li>
-                <li>
-            <figure>
-                <img src="./img/배수정.png" alt="배수정 프사">
-            </figure>
-            <dl>
-                <dt>이름</dt>
-                <dd>배수정</dd>
-                <dt>성별</dt>
-                <dd>38</dd>
-                <dt>결혼</dt>
-                <dd>미혼</dd>
-                <dt>취미</dt>
-                <dd>
-                    <span>독서하기</span>
-                    <span>공연보기</span>
-                </dd>
-            </dl>
-        </li>
-                <li>
-            <figure>
-                <img src="./img/배수정.png" alt="배수정 프사">
-            </figure>
-            <dl>
-                <dt>이름</dt>
-                <dd>배수정</dd>
-                <dt>성별</dt>
-                <dd>38</dd>
-                <dt>결혼</dt>
-                <dd>미혼</dd>
-                <dt>취미</dt>
-                <dd>
-                    <span>독서하기</span>
-                    <span>공연보기</span>
-                </dd>
-            </dl>
-        </li>
-                <li>
-            <figure>
-                <img src="./img/배수정.png" alt="배수정 프사">
-            </figure>
-            <dl>
-                <dt>이름</dt>
-                <dd>배수정</dd>
-                <dt>성별</dt>
-                <dd>38</dd>
-                <dt>결혼</dt>
-                <dd>미혼</dd>
-                <dt>취미</dt>
-                <dd>
-                    <span>독서하기</span>
-                    <span>공연보기</span>
-                </dd>
-            </dl>
-        </li>
+        </li>`)
+            }
+        </script>
     </ul>
 </body>
 </html>
