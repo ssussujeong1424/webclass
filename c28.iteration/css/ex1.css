@@ -1,0 +1,10 @@
+*{margin:0;padding:0;}
+img{max-width: 100%;}
+ul,ol{list-style:none;}
+
+.classmate{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:20px 20px;
+    padding: 0 3rem;
+}
