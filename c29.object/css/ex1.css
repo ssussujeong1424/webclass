@@ -1,0 +1,35 @@
+*{margin:0;padding:0;}
+img{max-width: 100%;}
+ul,ol{list-style:none;}
+
+.classmate{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:20px 20px;
+    padding: 0 3rem;
+}
+
+.classmate dl{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:12px 12px;
+}
+
+.classmate dd{
+    font-weight: bold;
+}
+
+.classmate dd span{
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 100px;
+    background-color: gold;
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+
+
+h1{
+    text-align: center;
+    padding: 3rem;
+}

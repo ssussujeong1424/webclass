@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우리반 명단</title>
+    <script src="./js/classroom.js"></script>
+    <link rel="stylesheet" href="./css/ex1.css">
+</head>
+<body>
+    <h1>우리반 명단</h1>
+    <ul class="classmate">
+        <script>
+            for(let i=0 ; i<classroom.length ; i++){
+                let hobbies = '';
+                for(let j=0 ; j<classroom[i].hobbies.length; j++){
+                    hobbies = hobbies + `<span>#${classroom[i].hobbies[j]}</span>`
+                }
+
+
+
+                            document.write(`<li>
+            <figure>
+                <img src="./img/${classroom[i].thumbnailFileName}" alt="${classroom[i].name} 프사">
+            </figure>
+            <dl>
+                <dt>이름</dt>
+                <dd>${classroom[i].name}</dd>
+                <dt>성별</dt>
+                <dd>${classroom[i].gender}</dd>
+                <dt>나이</dt>
+                <dd>${classroom[i].age}</dd>
+                <dt>결혼</dt>
+                <dd>${classroom[i].married?"기혼":"미혼"}</dd>
+                <dt>취미</dt>
+                <dd>
+                ${hobbies}
+                </dd>
+            </dl>
+        </li>`)
+            }
+        </script>
+    </ul>
+</body>
+</html>

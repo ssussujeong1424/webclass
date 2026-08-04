@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object - 객체 사물</title>
+</head>
+<body>
+    <script>
+        let person = {name:"정현진",gender:"남자",married:false} //name 변수, 남자 밸류, 합쳐서 속성
+        alert(person["name"]) //또는 person.name
+        console.log(person["name"][1]) // 정현진 // 현
+        console.log(person.gender.length) // 남자 // 2
+        let person2 = {name:'박민주',gender:'여자',married:true}
+        console.log(person2.name)
+
+        let newPerson = {...person,age:49,name:'김가온'} //person의 변수를 그대로 불러옴, 변수 추가, 중복변수는 대체됨
+        console.log(newPerson)
+    </script>
+</body>
+</html>
