@@ -25,6 +25,52 @@
         b('정현진',45)
         b('정선민',20)
 
+        function c(person){
+            document.write(`<p>${person[0]}님 반갑습니다.</p>`)
+            document.write(`<p>${person[0]}님은 ${person[1]}세이시군요.</p>`)
+        }
+
+        c(['정현진',44])
+
+        function d(person){
+            document.write(`<p>${person.name}님 반갑습니다.</p>`)
+            document.write(`<p>${person.name}님은 ${person.age}세이시군요.</p>`)
+        }
+
+        d({name:'함국주',age:25})
+
+        function e(){
+            alert('히히')
+            return 3 //함수 종료, 3은 남겨짐
+            alert('헤헤')
+        }
+
+        // alert(e()) // '히히', 3
+
+        // let result1 = e() // result라는 변수에 e()저장. '히히'는 실행되고, 실행되지 않은 3은 남겨짐
+        // console.log(result1)
+
+        function g(name){
+            document.write(`<p>${name}님 좋은아침입니다.</p>`)
+            // return name[0] // 배
+            return {na:name} // {na:'배수정'} 계산됨
+        }
+
+        g('배수정') // 실행후 '배수정' 남아있음. return 오른쪽 값
+
+        // let user= g('배수정')
+        // // alert(user)
+        // alert(user.na)
+
+        function getAver(score){
+            return (score[0]+score[1]+score[2])/3
+        }
+
+        alert(getAver([98,87,100]))
+
+
+
+        
     </script>
 </body>
 </html>

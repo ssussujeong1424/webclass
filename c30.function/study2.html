@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>값으로서 사용되는 함수</title>
+</head>
+<body>
+    <script>
+
+        a() //호출 먼저 써도 에러 안남
+        function a(){
+            alert('aaa')
+        }
+        
+        let b = function(){
+            alert('bbb')
+        } // 익명함수(동작표현)
+        b() //먼저 쓰면 에러남, 변수를 만들어서 동작을 저장하는 경우
+
+        let c = ()=>{
+            alert('ccc')
+        }
+        c()
+
+        let d = (name)=>{
+            alert(name+"님 반갑습니다.")
+        }
+
+        d('정현진')
+
+        
+        let g = name=>alert(name+"님 반갑습니다.")
+    
+        g('김예림')
+
+        let sum = (a,b)=>{
+            return a+b
+        }
+
+        // alert(sum(1,2)) //3
+
+        let sum2 = (a,b)=>a+b
+        alert(sum2(10,20)) //30
+
+        function abc(a){
+            // a = function(){} //abc라는 함수안에서 a라는 함수가 정의됨
+            a()
+        }
+
+        abc(function(){alert('test')})
+
+
+
+    </script>
+</body>
+</html>
