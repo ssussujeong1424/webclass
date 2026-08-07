@@ -28,7 +28,21 @@
         ['유채린',24,'여자',false,['여행가기','요리하기','블로그','음악듣기']]
         ]
         // classRoom[0][4][1] // 그림그리기
+        
+        // let classRoom2 = classRoom.map(el=>[el[0],el[1]]); //이름, 나이
+        // console.log(classRoom2)
 
+         let classRoom2 = classRoom.map(el=>({name:el[0],age:el[1],gender:el[2]}));
+        console.log(classRoom2)
+        
+        let classRoomMan = classRoom.filter(el=>el[2]==='남자');
+        console.log(classRoomMan);
+        
+        let age = classRoom.filter(el=>el[1]<=30);
+        console.log(age);
+
+        let ageobj=age.map(el=>({name:el[0],age:el[1]}))
+        console.log(ageobj)
     </script>
 </body>
 </html>

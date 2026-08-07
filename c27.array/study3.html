@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 함수</title>
+</head>
+<body>
+    <script>
+        let fruits = ['사과','수박','복숭아']; // forEach function의 1번째는 내용, 2번째는 순번, 3번째는 전체배열
+        // fruits.forEach(function(el,index,array){
+        //     console.log(el,index,array)
+        // })
+
+        //  fruits.forEach(el=>console.log(el+'사주세요'));
+
+        // let newFruit = fruits.map(function(el){  //map: 기존 배열로 새로운 배열을 만듦/ (el)=>, el=>, el=>{}와 return없이 한줄도 가능(;생략)
+        //     return '바른'+el;
+        // })
+        // console.log(fruits,newFruit)
+
+        let a = [1,2,3,4,5,6,7,8,9,10];
+        let b = a.filter(el=>el>=5)
+        console.log(b)
+         
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조건문</title>
+</head>
+<body>
+    <script>
+        // let a = 4 || 2 || 0; //4가 true이기 때문에 멈춤 
+        // let a = [1,2,3]; // a([3])은 네번째 원소가 없음
+        // let age = Number(prompt('나이입력해주세요'))
+        // if(age>20){
+        //     alert('입장가능합니다.')
+        // }else{
+        //     alert('입장안됩니다.')
+        // } //else는 () 괄호 생략함
+
+        // let score=83;
+        // // let result = 0;
+        // if(score>=90){
+        //     alert('1등급') //대신에 result = '1등급';
+        // }else if(score>=80){
+        //     alert('2등급')
+        // }else if(score>=70){
+        //     alert('3등급')
+        // }else{
+        //     alert('4등급')
+        // } //선조건이 참이면 그후로는 실행안함, 그냥 '1등급'만 적으면 return되지 않음. 저장되지 않고 실행만 됨
+
+        // let result = score>=90?'1등급':score>=80?'2등급':score>=70?'3등급':'4등급' // 2등급만 남음
+
+        let fruit = '바나나';
+        switch(fruit){
+            case '사과':
+                alert('사과입니다');
+                break; //break 만나면 종료됨
+            case '바나나':
+                alert('바나나입니다');
+                break;
+            default: 
+                alert('없습니다');
+        }
+
+
+    </script>
+</body>
+</html>

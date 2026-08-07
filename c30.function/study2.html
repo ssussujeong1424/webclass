@@ -8,7 +8,7 @@
 <body>
     <script>
 
-        a() //호출 먼저 써도 에러 안남
+        // a() //호출 먼저 써도 에러 안남
         function a(){
             alert('aaa')
         }
@@ -16,23 +16,23 @@
         let b = function(){
             alert('bbb')
         } // 익명함수(동작표현)
-        b() //먼저 쓰면 에러남, 변수를 만들어서 동작을 저장하는 경우
+        // b() //먼저 쓰면 에러남(변수를 만들어서 동작을 저장하는 경우)
 
         let c = ()=>{
             alert('ccc')
         }
-        c()
+        // c()
 
         let d = (name)=>{
             alert(name+"님 반갑습니다.")
         }
 
-        d('정현진')
+        // d('정현진')
 
         
         let g = name=>alert(name+"님 반갑습니다.")
     
-        g('김예림')
+        // g('김예림')
 
         let sum = (a,b)=>{
             return a+b
@@ -41,16 +41,54 @@
         // alert(sum(1,2)) //3
 
         let sum2 = (a,b)=>a+b
-        alert(sum2(10,20)) //30
+        // alert(sum2(10,20)) //30
 
         function abc(a){
-            // a = function(){} //abc라는 함수안에서 a라는 함수가 정의됨
+            // let a = function(){aleart('test')} //abc라는 함수안에서 a라는 함수가 정의됨
             a()
         }
 
-        abc(function(){alert('test')})
+        // abc(function(){alert('test')})
 
+        let fan = {
+            body:'검은색',
+            height:120,
+            width:30, 
+            weight:'6kg',
+            powerOn:function(){
+                alert('선풍기 전원이 켜졌습니다.')
+                this.fanSpeed=1
+            },
+            powerOff:function(){
+                alert('선풍기 전원이 꺼졌습니다.')
+                this.fanSpeed=0
+            },
+            fanSpeed:0,
+            fanSpeedUp:function(){
+                // 이 선풍기의 팬스피드를 올리는 기능
+                this.fanSpeed+=1
+            },
+            fanSpeedDown:function(){
+                this.fanSpped-=1
+            },
+            showFanSpeed:function(){
+                alert(`현재 선풍기의 풍속은 ${this.fanSpeed}단계입니다.`)
+            }
+        }
+        fan.body
+        fan.weight
+        fan.powerOn()
+        fan.powerOff()
+        fan.showFanSpeed()
+        fan.powerOn()
+        fan.showFanSpeed()
+        fan.fanSpeedUp()
+        fan.showFanSpeed()
 
+        console.log()
+        Math.round()
+        document.write('ttt')
+        
 
     </script>
 </body>
