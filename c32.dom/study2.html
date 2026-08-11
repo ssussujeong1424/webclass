@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>태그의 속성 편집하기</title>
+    <style>
+        .b.on{
+            background-color: red;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <figure>
+        <img src="./img/최윤성.png" alt="최윤성" class="a">
+        <figcaption class="b">최윤성</figcaption>
+    </figure>
+    <script>
+       const img = document.querySelector('.a'); //let이랑 동일한 함수. 태그 저장함
+        // alert(img.getAttribute('src')); // 변수가 아니라서 ''따옴표 씀
+        img.setAttribute('src','./img/정선민.png'); //html 이미지가 java 명령어로 바뀜
+        // alert(img.getAttribute('src'));
+        
+        const figcaption = document.querySelector('.b');
+        // alert(figcaption.textContent)
+        figcaption.innerText='정선민'; //내용 교체
+        figcaption.innerHTML='<i>수정</i>'; //내용 교체, 따옴표 안에 태그 추가 가능함
+
+        figcaption.classList.add('on'); //on class 추가함, 속성바뀜
+        figcaption.classList.remove('on'); // on class 삭제함
+    </script>
+
+    <ul class="list">
+        <li>1</li>
+        <li class="me">2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+
+    <script>
+        let me = document.querySelector('.me');
+        me.parentElement.style.border='2px solid green'; //li 부모 ul에 적용함
+        me.nextElementSibling.style.color='blue'; // me 클래스 다음 태그에 적용됨
+        me.previousElementSibling.style.color='pink'; // me 클래스 이전 태그에 적용됨
+        console.log(me.parentElement.previousElementSibling);
+        let list=document.querySelector('.list'); //ul태그가 선택됨
+        let listTags=list.children // [{},{},{},{},...]
+        listTags[0].style.color = 'red';
+        me.parentElement.previousElementSibling.previousElementSibling.children[0].setAttribute('src','./img/정현진.png');
+        
+    </script>
+
+</body>
+</html>
