@@ -1,0 +1,30 @@
+        html{font-size: 20px;}
+        h1{font-size: 3rem;}
+        h2{font-size: 1.4rem;}
+        p{font-size:0.8rem;}
+        .fontControl{
+        display:flex;gap:0.5rem;background-color: #fff;
+        position:fixed;right:0;top:0;padding:0.5rem;align-items: center;
+        transform: translateX(calc(100% - 2.6rem));
+        transition: all .5s ease 0s;
+         }
+
+        .fontControl.on{
+            transform: translateX(0px);
+        }
+
+        .fontControl span{
+            padding:.4rem 1.3rem;
+            border-radius: 100px;
+            box-shadow: 0  0 10px #ddd;
+            font-size:0.7rem;
+            cursor:pointer;
+        }
+        #btn-toggle{
+            padding: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }

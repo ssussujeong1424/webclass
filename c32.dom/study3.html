@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이벤트</title>
     <style>
-        .box{
+        .box,.frame{
             border:1px solid #000;
             padding: 20px;
+        }
+        .inbox{
+            border:1px solid blue;
         }
     </style>
 </head>
@@ -16,9 +19,20 @@
     <!-- 태그 뒤에 스크립트 순서로 있어야만 실행됨,DOMContentLoaded 있으면 됨 -->
     <button id="btn1">인사시키기</button>
     <button id="btn2">마우스누르고있으세요</button>
-    <p class="box">
+    <a href="https://www.naver.com/">네이버로 이동하기</a>
+    <a href="https://www.naver.com/">네이버로 이동하기</a>
+    <div class="box">
         기본 내용
-    </p>
+    </div>
+
+    <div class="frame">
+        기본 내용
+    <div class="inbox">
+        박스 안에 있는 박스입니다.
+    </div>
+    </div>
+
+    <input type="text" class="input">
 
 </body>
 </html>
