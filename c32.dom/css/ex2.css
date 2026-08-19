@@ -1,0 +1,21 @@
+.tabs{
+    display:flex;
+    gap:10px;
+}
+.tabs div{
+    border:1px solid #000;
+    cursor:pointer;
+    /*선택사항*/
+    padding:4px 12px;
+}
+.tabs div.on{
+    /* 선택사항 */
+    background-color: blue;
+    color:#fff;
+}
+.tab-contents>div{
+    display: none;
+}
+.tab-contents>div.on{
+    display: block;
+}
