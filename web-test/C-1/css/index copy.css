@@ -75,12 +75,15 @@ header{
     display:none;
     opacity: 0;
     pointer-events: none;
+    /* width:0;
+    overflow:hidden; */
 }
 
 .gnb>li:hover ul{
     display:block;
     opacity: 1;
     pointer-events: auto;
+    /* width:180px; */
 }
 
 
