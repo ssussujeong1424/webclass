@@ -1,0 +1,198 @@
+@charset 'utf-8';
+*{margin:0;padding:0;}
+a{text-decoration: inherit;color:inherit;}
+img{max-width:100%;}
+ul{list-style:none;}
+
+.modal{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color: #000;
+    opacity:0.7;
+    z-index:1000;
+    display:none;
+}
+
+.modal.on{display.none;}
+
+.popup{
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:300px;
+    padding:30px;
+    z-index:1200;
+    background-color: #fff;
+    display: none;
+}
+
+.popup.on{
+    display:block;
+}
+
+.popup-ctl{
+    display:flex;
+    justify-content: flex-end;
+
+}
+
+.container{
+    display:flex;
+    height:calc(100dvh - 120px);
+}
+
+header{
+    width:200px;    
+}
+
+.logo{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.gnb a{
+    display:flex;
+    width:180px;
+    height:50px;
+    align-items: center;
+}
+
+.gnb{
+    width:180px;
+    margin:0 auto;
+}
+
+.gnb>li{
+    position: relative;
+}
+
+.gnb ul{
+    position:absolute;
+    left:180px;
+    top:0;
+    background-color: rgba(104, 100, 100, 0.497);
+    opacity:0;
+    pointer-events: none;
+    transition: all 0.5s ease 0s;
+}
+
+.gnb>li:hover ul{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.gnb li:hover>a{
+    background-color: #000;
+    color:#fff;
+}
+
+main{
+    width:400px;
+}
+
+.banner{
+    display:flex;
+    gap:10px;
+    padding:10px;
+}
+
+.banner figure{
+    width:100px;
+    flex-shrink: 0;
+}
+
+.notice{
+    padding:10px;
+}
+
+.notice h2{
+    margin-bottom: 10px;
+}
+
+.notice li{
+    display:flex;
+    justify-content: space-between;
+}
+
+.gallery{
+    padding:10px;
+}
+
+.gallery h2{
+    margin-bottom:10px;
+}
+
+.gal{
+    display:flex;
+    gap:10px;
+}
+
+.gal a{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.direct{
+    padding:10px;
+}
+
+.dir{
+    display:flex;
+    gap:10px;
+}
+
+.dir a{
+    display: flex;
+    flex-direction: column;
+}
+
+.dir a img{
+    width:80px;
+    aspect-ratio: 1/1;
+}
+
+.station{
+    width:calc(100% - 600px);
+    overflow:hidden;
+}
+
+.train{
+    width:300%;
+    height:100%;
+    transition: all 1s ease 0s;
+    display:flex;
+}
+
+.train>div{
+    flex:1;
+    line-height:0;
+}
+
+.train img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+footer{
+    display: flex;
+    height:120px;
+    background-color: #000;
+    color:#fff;
+    gap:10px;
+    align-items: center;
+}
+
+.fcon{
+    flex-grow: 1;
+}
+
+.fmenu{
+    display:flex;
+    gap:10px;
+}

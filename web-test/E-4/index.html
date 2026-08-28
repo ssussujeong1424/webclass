@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>철길마을</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/index.js" defer></script>
+</head>
+<body>
+    <div class="modal"></div>
+    <div class="popup">
+        <h2>철길 마을에 오신 것을 환영합니다!</h2>
+        <p>안녕하세요! 철길 마을을 방문해 주셔서 감사합니다.
+            여기에서는 기차의 역사와 아름다운 자연을 함께 경험할 수 있는 특별한 기회를 제공합니다.
+            신규 이벤트와 체험 프로그램이 마련되어 있으니, 놓치지 마세요!</p>
+        <div class="popup-ctl">
+            <span id="btn-close">x닫기</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <a href="#">
+                    <img src="./img/logo.jpg" alt="철길마을 로고">
+                </a>
+            </div>
+            <ul class="gnb">
+                <li>
+                    <a href="#">철길 마을</a>
+                    <ul>
+                        <li><a href="#">마을 소개</a></li>
+                        <li><a href="#">마을의 유래</a></li>
+                        <li><a href="#">볼거리</a></li>
+                        <li><a href="#">찾아오시는 길</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">주변 맛집</a>
+                    <ul>
+                        <li><a href="#">빵집</a></li>
+                        <li><a href="#">간장게장</a></li>
+                        <li><a href="#">중국음식점</a></li>
+                        <li><a href="#">횟집</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">주변 여행지</a>
+                    <ul>
+                        <li><a href="#">은파호수공원</a></li>
+                        <li><a href="#">초원사진관</a></li>
+                        <li><a href="#">월명공원</a></li>
+                        <li><a href="#">진포해양공원</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">도움마당</a>
+                    <ul>
+                        <li><a href="#">교통정보</a></li>
+                        <li><a href="#">주변 주차장</a></li>
+                        <li><a href="#">자료실</a></li>
+                        <li><a href="#">자료마당</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+
+        <main>
+            <div class="banner">
+                <figure>
+                    <img src="./img/banner.jpg" alt="배너">
+                </figure>
+                <div class="banner-content">
+                    <h2>철길 마을, 기차와 함께하는 특별한 여행!</h2>
+                    <p>철길 마을에서 과거의 기차 여행을 경험해 보세요!
+                    아름다운 자연과 역사적인 철길이 어우러진 이곳에서 특별한 추억을 만들어 보세요.
+                    가족과 함께하는 다양한 체험 프로그램과 이벤트가 준비되어 있으니 지금 바로 확인해 보세요!</p>
+                </div>
+                <a href="#">></a>
+            </div>
+
+            <div class="notice">
+                <h2>공지사항</h2>
+                <ul>
+                    <li id="btn-popup">
+                        <a href="#">2024년 철길 마을 여름 이벤트 일정 안내</a>
+                        <span>2024년 6월 1일</span>
+                    </li>
+                    <li>
+                        <a href="#">가족 단위 체험 프로그램 사전 예약 시작</a>
+                        <span>2024년 6월 5일</span>
+                    </li>
+                    <li>
+                        <a href="#">철길 마을 역사 전시회 개최 소식</a>
+                        <span>2024년 6월 10일</span>
+                    </li>
+                    <li>
+                        <a href="#">기차 투어 및 안내 서비스 재개 안내</a>
+                        <span>2024년 6월 15일</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="gallery">
+                <h2>갤러리</h2>
+                <ul class="gal">
+                    <li>
+                        <a href="#">
+                            <img src="./img/gal1.jpg" alt="갤러리1번">
+                            <span>갤러리1번</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/gal2.jpg" alt="갤러리2번">
+                            <span>갤러리2번</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="direct">
+                <ul class="dir">
+                    <li>
+                        <a href="#">
+                            <img src="./img/icon1.png" alt="체험프로그램">
+                            <span>체험프로그램</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/icon2.png" alt="위치안내">
+                            <span>위치안내</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/icon3.png" alt="공지사항">
+                            <span>공지사항</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="./img/icon4.png" alt="전화안내">
+                            <span>전화안내</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <div class="station">
+            <div class="train">
+                <div><img src="./img/slide1.jpg" alt="철길 마을의 역사: 과거와 현재의 만남"></div>
+                <div><img src="./img/slide2.jpg" alt="특별 체험 프로그램: 기차 여행의 추억"></div>
+                <div><img src="./img/slide3.jpg" alt="철길 마을 탐방: 숨은 명소와 즐길 거리"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="logof">
+            <a href="#">
+                <img src="./img/logo-foot.jpg" alt="푸터 로고">
+            </a>
+        </div>
+        <div class="fcon">
+            <ul class="fmenu">
+                <li><a href="#">회사 소개</a></li>
+                <li><a href="#">체험 프로그램</a></li>
+                <li><a href="#">이벤트 일정</a></li>
+                <li><a href="#">자주 묻는 질문</a></li>
+                <li><a href="#">고객 지원</a></li>
+                <li><a href="#">개인정보 처리방침</a></li>
+            </ul>
+            <div class="copy">COPYRIGHTⓒ by BARUNWEBDESIGN. ALL RIGHTS RESERVED.</div>
+        </div>
+        <form action="#">
+            <select>
+                <option value="한국철도공사">한국철도공사</option>
+                <option value="전국 관광지 정보센터">전국 관광지 정보센터</option>
+                <option value="문화재청 공식 홈페이지">문화재청 공식 홈페이지</option>
+            </select>
+        </form>
+    </footer>
+
+</body>
+</html>
