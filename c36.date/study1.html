@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날짜객체</title>
+    <style>
+        .time-frame{font-size: 50px;}
+    </style>
+</head>
+<body>
+    <h1>date객체</h1>
+    <p>date객체를 통하여 날짜 정보를 가져올 수 있다.</p>
+    <div class="time-frame">
+        현재는 2026년 9월 1일 9시 54분 30초입니다.
+    </div>
+    <script>
+        let monthArray = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+        let dayArray = ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'];
+        let today = new Date();
+        let hour = today.getHours();
+        let minute = today.getMinutes();
+        let second = today.getSeconds();
+        let year = today.getFullYear();
+        let month = today.getMonth();
+        let date = today.getDate();
+        let day = today.getDay();
+        const timeFrame = document.querySelector('.time-frame');
+        timeFrame.innerHTML = `현재는 ${year}년 ${monthArray[month]} ${date}일 ${dayArray[day]} ${hour}시 ${minute}분 ${second}초입니다.`;
+
+        setInterval(()=>{
+            let today = new Date();
+            let hour = today.getHours();
+            let minute = today.getMinutes();
+            let second = today.getSeconds();
+            let year = today.getFullYear();
+            let month = today.getMonth();
+            let date = today.getDate();
+            let day = today.getDay();
+            timeFrame.innerHTML = `현재는 ${year}년 ${monthArray[month]} ${date}일 ${dayArray[day]} ${hour}시 ${minute}분 ${second}초입니다.`;
+        },1000);
+    </script>
+
+</body>
+</html>
