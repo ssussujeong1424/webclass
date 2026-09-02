@@ -1,0 +1,56 @@
+main{
+    height:12000px;
+    background: linear-gradient(180deg,red,green,blue,gold,pink);
+}
+#scr{
+    position: fixed;
+    left:1rem;
+    top:0rem;
+    background-color: #fff;;
+    padding:10px;
+    font-size: 30px;
+    border-radius: 5px;
+    transform: translateY(-100%);
+    transition:all 0.5s ease 0s;
+}
+#scr.on{
+    top:1rem;
+    transform: translateY(0%);
+}
+
+
+*{margin:0;padding:0;}
+.progress{
+    position: fixed;
+    width:90%;
+    left:5%;
+    bottom:20px;
+}
+.bar-wrap{
+    overflow: hidden;
+    height:10px;
+    border-radius: 100px;
+    background-color: rgba(245, 245, 220, 0.525);
+}
+.bar{
+    width:20%;
+    height:10px;
+    background-color: rgb(79, 224, 234);
+    border-radius: 100px;
+}
+.percent{
+    text-align: center;
+}
+.btn-top{
+    position: fixed;
+    right:5%;
+    bottom:5%;
+    background-color: #fff;
+    width:3rem;
+    height:3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
