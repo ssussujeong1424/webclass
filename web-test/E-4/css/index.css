@@ -16,7 +16,7 @@ ul{list-style:none;}
     display:none;
 }
 
-.modal.on{display.none;}
+.modal.on{display:none;}
 
 .popup{
     position:fixed;
