@@ -164,7 +164,7 @@ header{
     color:#fff;
 }
 
-.gnb>li:hover ul{
+.gnb li:hover ul{
     opacity:1;
     pointer-events:auto;
 }   

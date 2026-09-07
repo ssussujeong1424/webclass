@@ -1,0 +1,148 @@
+/* 스타일 */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: #f1f5f9;
+    scroll-padding-top: 24px;
+}
+
+body {
+    max-width: 940px;
+    margin: 64px auto;
+    padding: 72px 64px;
+    border-radius: 16px;
+    background: #fff;
+    color: #334155;
+    font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    font-size: 16px;
+    line-height: 2;
+    overflow-wrap: break-word;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+h1 {
+    margin: 0 0 40px;
+    color: #0f172a;
+    font-size: 32px;
+    line-height: 1.4;
+    letter-spacing: -1px;
+}
+
+h2 {
+    margin: 72px 0 28px;
+    padding-bottom: 18px;
+    border-bottom: 2px solid #dbeafe;
+    color: #1e40af;
+    font-size: 23px;
+    line-height: 1.5;
+}
+
+p {
+    margin: 24px 0;
+}
+
+ul,
+ol {
+    margin: 28px 0;
+    padding-left: 26px;
+}
+
+li {
+    margin: 14px 0;
+}
+
+li::marker {
+    color: #2563eb;
+}
+
+b {
+    color: #0f172a;
+}
+
+a {
+    color: #1d4ed8;
+    text-underline-offset: 4px;
+}
+
+a:hover {
+    color: #1e3a8a;
+}
+
+a:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+blockquote,
+address {
+    margin: 32px 0;
+    padding: 28px 32px;
+    border-radius: 8px;
+    background: #eff6ff;
+}
+
+blockquote {
+    border-left: 4px solid #2563eb;
+    color: #1e40af;
+}
+
+address {
+    font-style: normal;
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 24px 16px;
+        padding: 40px 24px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    h2 {
+        margin-top: 56px;
+        font-size: 20px;
+    }
+
+    blockquote,
+    address {
+        padding: 24px 20px;
+    }
+}
+
+
+/* 시작 */
+
+.ltr{
+    transition:all 0.5s ease 0s;
+    transform:translateX(-30px);
+    opacity:0;
+}
+
+.ltr.on{
+    transform:translateX(0px);
+    opacity:1;
+}
+
+.fade{
+    transition:all 1s ease 0s;
+    opacity:0;
+}
+
+.fade.on{
+    opacity:1;
+}
+
+.fog{
+    transition:all 1s ease 0s;
+    filter:blur(50px);
+}
+
+.fog.on{
+    filter: blur(0);
+}

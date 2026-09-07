@@ -1,0 +1,75 @@
+@charset 'utf-8';
+*{margin:0;padding:0;}
+ul{list-style:none;}
+a{text-decoration: inherit;color:inherit;}
+img{max-width:100%;}
+
+html{
+    background-color: #fff;
+    color:#333;
+}
+
+.container{
+    overflow-x:hidden;
+    display:flex;
+}
+
+header{
+    width:200px;
+
+    position:relative;
+    z-index:100;
+}
+
+.gnb{
+    width:180px;
+
+    margin:0 auto;
+}
+
+.gnb>li{
+    position:relative;
+}
+
+
+.gnb ul{
+    position:absolute;
+    top:0;
+    left:180px;
+    display:flex;
+
+    background-color: blue;
+    width:100vw;
+    opacity:0;
+    pointer-events:none;
+    transition: all 0.5s ease 0s;
+}
+
+.gnb:hover ul{
+
+    opacity:1;
+    pointer-events: auto;
+}
+
+.gnb a{
+    width:180px;
+    height:50px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gnb li:hover>a{
+    background-color: #333;
+    color:#fff;
+}
+
+
+const slides=document.querySelectorAll('.train>div');
+let count=0;
+setInterval(()=>{
+    count++;
+    if(count>2){count=0};
+    slides.forEach(a=>a.classList.remove('on'));
+    slides[count].classList.add('on');
+},2500)
