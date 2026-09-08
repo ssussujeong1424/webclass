@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리</title>
+    <script src="./js/jquery-4.0.0.min.js"></script>
+</head>
+<body>
+    <h1>title</h1>
+
+    <ul class="list">
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+        <li>list</li>
+    </ul>
+
+
+    <script>
+        const h1tag = document.querySelector('h1');
+        h1tag.style.color = 'red';
+        h1tag.style.backgroundColor='gold';
+        document.querySelectorAll('.list>li');
+        liTags.forEach((li)=>{li.style.fontSize='30px'});
+
+        const h1 = jQuery('h1');
+        h1.css('color','blue');
+        h1.css('background-color','red');
+        const li = $('.list>li');
+        li.css('font-size','50px');
+
+    </script>
+</body>
+</html>
