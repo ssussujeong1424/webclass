@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SUJEONG PORTFOLIO 2026</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/main.js" defer></script>
+</head>
+<body>
+
+<section class="hero">
+
+  <!--
+    같은 4초 영상을 두 개 겹쳐 재생합니다.
+    마지막 0.65초에서 다음 영상의 첫 장면과 크로스페이드되어
+    일반 loop보다 훨씬 자연스럽게 반복됩니다.
+  -->
+  <div class="hero-media" aria-hidden="true">
+    <video
+      id="heroVideoA"
+      class="hero-video is-active"
+      muted
+      playsinline
+      preload="auto"
+      poster="./img/hero-poster.jpg"
+    >
+      <source src="./video/cherry-main.mp4" type="video/mp4">
+    </video>
+
+    <video
+      id="heroVideoB"
+      class="hero-video"
+      muted
+      playsinline
+      preload="auto"
+    >
+      <source src="./video/cherry-main.mp4" type="video/mp4">
+    </video>
+  </div>
+
+
+  <!-- HEADER -->
+  <header class="hero-header">
+    <a href="#" class="logo">SUJEONG</a>
+
+    <nav class="gnb">
+      <a href="#about">ABOUT</a>
+      <a href="#works">WORKS</a>
+      <a href="#project">PROJECT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+
+    <div class="page-num">
+      <span></span>
+      <b>01</b>
+    </div>
+  </header>
+
+
+  <!-- MAIN COPY -->
+  <div class="hero-title">
+    <h1>
+      VISUAL<br>
+      WITH A<br>
+      PURPOSE.
+    </h1>
+
+    <h2>
+      감각적으로 표현하고,<br>
+      명확하게 전달합니다.
+    </h2>
+
+    <div class="small-line"></div>
+
+    <p class="job">
+      WEB DESIGNER · UI DESIGN · PUBLISHING
+    </p>
+
+    <p class="description">
+      제품의 매력을 발견하고,<br>
+      사용자가 한눈에 이해할 수 있는 화면으로 만듭니다.
+    </p>
+  </div>
+
+
+  <!-- RIGHT COPY -->
+  <div class="hero-message">
+    <p>
+      GOOD<br>
+      DESIGN<br>
+      BRINGS<br>
+      GOOD<br>
+      THINGS.
+    </p>
+
+    <span></span>
+
+    <p class="sub">
+      ALWAYS<br>
+      FOR A BETTER<br>
+      EXPERIENCE.
+    </p>
+  </div>
+
+
+  <!-- BOTTOM -->
+  <div class="hero-bottom">
+    <div class="portfolio">
+      <span class="portfolio-text">SUJEONG PORTFOLIO 2026</span>
+      <span class="portfolio-line"></span>
+    </div>
+
+    <a href="#about" class="scroll-btn">
+      <span>SCROLL<br>TO EXPLORE</span>
+      <b>→</b>
+    </a>
+  </div>
+
+</section>
+
+
+<main>
+  <section id="about" class="dummy-section"><h2>ABOUT</h2></section>
+  <section id="works" class="dummy-section"><h2>WORKS</h2></section>
+  <section id="project" class="dummy-section"><h2>PROJECT</h2></section>
+  <section id="contact" class="dummy-section"><h2>CONTACT</h2></section>
+</main>
+
+</body>
+</html>
