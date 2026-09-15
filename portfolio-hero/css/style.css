@@ -496,17 +496,335 @@ video{
 /* =========================
    ABOUT BANNER
 ========================= */
+
 .about-banner{
+  position:relative;
+
   width:100%;
+  aspect-ratio:1024 / 296;
+
+  margin:0;
+
   overflow:hidden;
-  background:#f5dfe2;
+
+  background:#f6e4e6;
 }
 
-.about-banner img{
+
+/* 배경 사진 */
+
+.about-banner-image{
+  display:block;
+
   width:100%;
-  height:auto;
+  height:100%;
+
   object-fit:cover;
+  object-position:center;
 }
+
+
+/* =========================
+   LEFT COPY
+========================= */
+
+.banner-left-copy{
+  position:absolute;
+
+  left:6.4%;
+  top:17.5%;
+
+  z-index:2;
+
+  color:#373330;
+}
+
+
+/* A BRIGHTER TODAY */
+
+.banner-kicker{
+  margin:0;
+
+  font-family:
+    "Cormorant Garamond",
+    "Times New Roman",
+    Georgia,
+    serif;
+
+  font-size:clamp(11px, .82vw, 16px);
+
+  line-height:1.45;
+
+  font-weight:500;
+
+  letter-spacing:.27em;
+}
+
+
+/* 작은 가로선 */
+
+.banner-short-line{
+  display:block;
+
+  width:27px;
+  height:1px;
+
+  margin:
+    14px
+    0
+    21px;
+
+  background:rgba(55,51,48,.58);
+}
+
+
+/* MAKE EVERYDAY */
+
+.banner-left-copy h2{
+  margin:0;
+
+  font-family:
+    "Cormorant Garamond",
+    "Times New Roman",
+    Georgia,
+    serif;
+
+  font-size:clamp(
+    31px,
+    3.05vw,
+    58px
+  );
+
+  line-height:1.03;
+
+  font-weight:400;
+
+  letter-spacing:-.025em;
+
+  white-space:nowrap;
+}
+
+
+.banner-left-copy h2 span{
+  color:#ee9aa8;
+}
+
+
+/* 한국어 문구 */
+
+.banner-description{
+  margin-top:clamp(
+    19px,
+    1.8vw,
+    30px
+  );
+
+  font-family:
+    "Pretendard",
+    "Noto Sans KR",
+    sans-serif;
+
+  font-size:clamp(
+    11px,
+    .88vw,
+    17px
+  );
+
+  line-height:1.65;
+
+  font-weight:300;
+
+  letter-spacing:.01em;
+
+  color:#4d4946;
+}
+
+
+
+/* =========================
+   RIGHT COPY
+========================= */
+
+.banner-right-copy{
+  position:absolute;
+
+  right:3.2%;
+  bottom:8.5%;
+
+  z-index:2;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  gap:16px;
+
+  color:#fff;
+}
+
+
+/* 오른쪽 세로선 */
+
+.banner-right-line{
+  display:block;
+
+  width:1px;
+  height:60px;
+
+  flex:none;
+
+  background:rgba(255,255,255,.85);
+}
+
+
+/* FROM VISUAL TO INTERACTION */
+
+.banner-right-copy p{
+  margin:0;
+
+  font-family:
+    "Cormorant Garamond",
+    "Times New Roman",
+    Georgia,
+    serif;
+
+  font-size:clamp(
+    8px,
+    .68vw,
+    13px
+  );
+
+  line-height:1.5;
+
+  font-weight:500;
+
+  letter-spacing:.22em;
+
+  color:#fff;
+}
+
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:1024px){
+
+  .banner-left-copy{
+    left:6.4%;
+    top:17%;
+  }
+
+
+  .banner-left-copy h2{
+    font-size:
+      clamp(
+        28px,
+        4.2vw,
+        43px
+      );
+  }
+
+
+  .banner-right-copy{
+    right:3%;
+    bottom:8%;
+  }
+
+}
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  .about-banner{
+    height:260px;
+
+    aspect-ratio:auto;
+  }
+
+
+  .about-banner-image{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    object-position:center;
+  }
+
+
+  .banner-left-copy{
+    left:6%;
+    top:15%;
+  }
+
+
+  .banner-kicker{
+    font-size:8px;
+
+    letter-spacing:.22em;
+  }
+
+
+  .banner-short-line{
+    width:20px;
+
+    margin:
+      9px
+      0
+      12px;
+  }
+
+
+  .banner-left-copy h2{
+    font-size:
+      clamp(
+        21px,
+        5.8vw,
+        31px
+      );
+
+    line-height:1.05;
+  }
+
+
+  .banner-description{
+    margin-top:13px;
+
+    font-size:9px;
+
+    line-height:1.55;
+  }
+
+
+  .banner-right-copy{
+    right:3.5%;
+    bottom:7%;
+
+    gap:8px;
+  }
+
+
+  .banner-right-line{
+    height:38px;
+  }
+
+
+  .banner-right-copy p{
+    font-size:6px;
+
+    letter-spacing:.16em;
+  }
+
+}
+
+
+
 
 /* =========================
    DESIGN CAPABILITIES
@@ -1097,5 +1415,824 @@ video{
     opacity:1;
     transform:none;
     transition:none;
+  }
+}
+
+/* =========================
+   DESIGN CAPABILITIES
+   PETAL MOTION
+========================= */
+
+.expertise-block{
+  position:relative;
+  overflow:hidden;
+}
+
+.petal{
+  pointer-events:none;
+  will-change:transform, opacity;
+}
+
+
+/* 첫 번째 꽃잎 */
+
+.petal-one{
+  top:-80px;
+  right:45px;
+
+  animation:
+    petalFallOne 10s
+    linear
+    infinite;
+}
+
+
+/* 두 번째 꽃잎 */
+
+.petal-two{
+  top:-80px;
+  right:105px;
+  bottom:auto;
+
+  animation:
+    petalFallTwo 12s
+    linear
+    -5s
+    infinite;
+}
+
+
+/* =========================
+   PETAL 01
+========================= */
+
+@keyframes petalFallOne{
+
+  0%{
+    transform:
+      translate3d(0, -60px, 0)
+      rotate(-25deg);
+
+    opacity:0;
+  }
+
+  5%{
+    opacity:.75;
+  }
+
+  20%{
+    transform:
+      translate3d(-20px, 150px, 0)
+      rotate(10deg);
+  }
+
+  40%{
+    transform:
+      translate3d(18px, 340px, 0)
+      rotate(48deg);
+  }
+
+  60%{
+    transform:
+      translate3d(-18px, 530px, 0)
+      rotate(88deg);
+  }
+
+  80%{
+    transform:
+      translate3d(20px, 720px, 0)
+      rotate(125deg);
+
+    opacity:.7;
+  }
+
+  96%{
+    opacity:.65;
+  }
+
+  100%{
+    transform:
+      translate3d(-8px, 920px, 0)
+      rotate(165deg);
+
+    opacity:0;
+  }
+
+}
+
+
+/* =========================
+   PETAL 02
+========================= */
+
+@keyframes petalFallTwo{
+
+  0%{
+    transform:
+      translate3d(0, -60px, 0)
+      rotate(30deg)
+      scale(.75);
+
+    opacity:0;
+  }
+
+  5%{
+    opacity:.6;
+  }
+
+  20%{
+    transform:
+      translate3d(22px, 150px, 0)
+      rotate(5deg)
+      scale(.75);
+  }
+
+  40%{
+    transform:
+      translate3d(-18px, 340px, 0)
+      rotate(-35deg)
+      scale(.75);
+  }
+
+  60%{
+    transform:
+      translate3d(20px, 530px, 0)
+      rotate(-75deg)
+      scale(.75);
+  }
+
+  80%{
+    transform:
+      translate3d(-16px, 720px, 0)
+      rotate(-115deg)
+      scale(.75);
+
+    opacity:.55;
+  }
+
+  96%{
+    opacity:.5;
+  }
+
+  100%{
+    transform:
+      translate3d(12px, 920px, 0)
+      rotate(-160deg)
+      scale(.75);
+
+    opacity:0;
+  }
+
+}
+
+
+/* 모션 최소화 설정 */
+
+@media(prefers-reduced-motion:reduce){
+
+  .petal-one,
+  .petal-two{
+    animation:none;
+  }
+
+}
+
+
+/* =========================
+   BANNER 가독성 수정
+========================= */
+
+/* 왼쪽 글씨 뒤에만 은은한 밝은 그라데이션 */
+.about-banner::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+
+  width:48%;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.72) 0%,
+      rgba(255,255,255,.52) 45%,
+      rgba(255,255,255,.18) 75%,
+      rgba(255,255,255,0) 100%
+    );
+
+  z-index:1;
+  pointer-events:none;
+}
+
+
+/* 왼쪽 전체 문구 */
+.banner-left-copy{
+  z-index:2;
+  color:#292625;
+}
+
+
+/* A BRIGHTER TODAY */
+.banner-kicker{
+  color:#292625;
+  font-weight:600;
+}
+
+
+/* 메인 타이틀 */
+.banner-left-copy h2{
+  color:#2b2726;
+  font-weight:500;
+
+  text-shadow:
+    0 1px 2px rgba(255,255,255,.4);
+}
+
+
+/* 한국어 */
+.banner-description{
+  color:#403b38;
+  font-weight:400;
+}
+
+
+/* 오른쪽 문구는 사진 위에 유지 */
+.banner-right-copy{
+  z-index:2;
+}
+
+
+/* 오른쪽 흰 세로선 기존의 2배 */
+.banner-right-line{
+  width:1px;
+  height:120px;
+
+  background:
+    rgba(255,255,255,.9);
+}
+
+
+/* ==================================================
+   ABOUT BANNER - FINAL OVERRIDE
+   ★ style.css 맨 마지막에 그대로 추가
+================================================== */
+
+
+/* =========================
+   BANNER WRAP
+========================= */
+
+.about-banner{
+  position:relative;
+
+  width:100%;
+  height:auto !important;
+
+  aspect-ratio:auto !important;
+
+  margin:0;
+
+  overflow:hidden;
+
+  background:#f6e4e6;
+}
+
+
+/* =========================
+   BANNER IMAGE
+   머리 / 신발 모두 보이게
+========================= */
+
+.about-banner .about-banner-image{
+  display:block;
+
+  width:100% !important;
+  height:auto !important;
+
+  max-width:none;
+
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+
+
+/* 기존 모바일 CSS의
+   .about-banner img
+   규칙까지 덮어쓰기 */
+
+.about-banner img{
+  width:100% !important;
+  height:auto !important;
+
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+
+
+/* =========================
+   LEFT SOFT GRADIENT
+========================= */
+
+.about-banner::after{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  top:0;
+  bottom:0;
+
+  width:47%;
+
+  z-index:1;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.28) 0%,
+      rgba(255,255,255,.19) 40%,
+      rgba(255,255,255,.08) 72%,
+      rgba(255,255,255,0) 100%
+    );
+}
+
+
+/* =========================
+   LEFT COPY
+========================= */
+
+.banner-left-copy{
+  position:absolute;
+
+  left:6.4%;
+  top:17%;
+
+  z-index:2;
+
+  color:#292625;
+}
+
+
+/* A BRIGHTER TODAY */
+
+.banner-kicker{
+  margin:0;
+
+  color:#292625;
+
+  font-family:
+    "Cormorant Garamond",
+    "Times New Roman",
+    Georgia,
+    serif;
+
+  font-size:clamp(
+    11px,
+    .82vw,
+    16px
+  );
+
+  line-height:1.45;
+
+  font-weight:600;
+
+  letter-spacing:.27em;
+}
+
+
+/* 작은 가로선 */
+
+.banner-short-line{
+  display:block;
+
+  width:27px;
+  height:1px;
+
+  margin:
+    14px
+    0
+    21px;
+
+  background:
+    rgba(55,51,48,.65);
+}
+
+
+/* =========================
+   MAIN TITLE
+========================= */
+
+.banner-left-copy h2{
+  margin:0;
+
+  color:#2b2726;
+
+  font-family:
+    "Cormorant Garamond",
+    "Times New Roman",
+    Georgia,
+    serif;
+
+  font-size:clamp(
+    31px,
+    3.05vw,
+    58px
+  );
+
+  line-height:1.03;
+
+  font-weight:500;
+
+  letter-spacing:-.025em;
+
+  white-space:nowrap;
+
+  text-shadow:
+    0 1px 1px
+    rgba(255,255,255,.15);
+}
+
+
+.banner-left-copy h2 span{
+  color:#ec95a4;
+}
+
+
+/* =========================
+   KOREAN TEXT
+========================= */
+
+.banner-description{
+  margin-top:clamp(
+    19px,
+    1.8vw,
+    30px
+  );
+
+  color:#403b38;
+
+  font-family:
+    "Pretendard",
+    "Noto Sans KR",
+    sans-serif;
+
+  font-size:clamp(
+    11px,
+    .88vw,
+    17px
+  );
+
+  line-height:1.65;
+
+  font-weight:400;
+
+  letter-spacing:.01em;
+}
+
+
+/* =========================
+   RIGHT COPY
+========================= */
+
+.banner-right-copy{
+  position:absolute;
+
+  right:3.2%;
+  bottom:8%;
+
+  z-index:2;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  gap:16px;
+
+  color:#fff;
+}
+
+
+/* 흰색 세로선 */
+
+.banner-right-line{
+  display:block;
+
+  flex:none;
+
+  width:1px;
+  height:120px;
+
+  background:
+    rgba(255,255,255,.9);
+}
+
+
+/* 오른쪽 문구 */
+
+.banner-right-copy p{
+  margin:0;
+
+  color:#fff;
+
+  font-family:
+    "Cormorant Garamond",
+    "Times New Roman",
+    Georgia,
+    serif;
+
+  font-size:clamp(
+    8px,
+    .68vw,
+    13px
+  );
+
+  line-height:1.5;
+
+  font-weight:500;
+
+  letter-spacing:.22em;
+
+  text-shadow:
+    0 1px 3px
+    rgba(0,0,0,.18);
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:1024px){
+
+  .about-banner{
+    height:auto !important;
+    aspect-ratio:auto !important;
+  }
+
+
+  .about-banner .about-banner-image,
+  .about-banner img{
+    width:100% !important;
+    height:auto !important;
+
+    object-fit:contain !important;
+    object-position:center center !important;
+  }
+
+
+  .banner-left-copy{
+    left:6%;
+    top:15%;
+  }
+
+
+  .banner-left-copy h2{
+    font-size:
+      clamp(
+        25px,
+        4.1vw,
+        43px
+      );
+  }
+
+
+  .banner-right-copy{
+    right:3%;
+    bottom:7%;
+  }
+
+
+  .banner-right-line{
+    height:95px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  /* 고정 높이 완전히 제거 */
+
+  .about-banner{
+    width:100%;
+
+    height:auto !important;
+
+    min-height:0 !important;
+
+    aspect-ratio:auto !important;
+  }
+
+
+  /* ★ 핵심
+     cover 사용하지 않음
+     사진 비율 그대로 표시 */
+
+  .about-banner .about-banner-image,
+  .about-banner img{
+    display:block;
+
+    width:100% !important;
+
+    height:auto !important;
+
+    min-height:0 !important;
+
+    max-height:none !important;
+
+    object-fit:contain !important;
+
+    object-position:center center !important;
+  }
+
+
+  .about-banner::after{
+    width:60%;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,.25) 0%,
+        rgba(255,255,255,.15) 48%,
+        rgba(255,255,255,0) 100%
+      );
+  }
+
+
+  .banner-left-copy{
+    left:5.5%;
+    top:13%;
+  }
+
+
+  .banner-kicker{
+    font-size:7px;
+
+    line-height:1.4;
+
+    letter-spacing:.2em;
+  }
+
+
+  .banner-short-line{
+    width:18px;
+
+    margin:
+      7px
+      0
+      10px;
+  }
+
+
+  .banner-left-copy h2{
+    font-size:
+      clamp(
+        17px,
+        5vw,
+        29px
+      );
+
+    line-height:1.04;
+
+    white-space:nowrap;
+  }
+
+
+  .banner-description{
+    margin-top:10px;
+
+    font-size:
+      clamp(
+        7px,
+        1.9vw,
+        10px
+      );
+
+    line-height:1.5;
+  }
+
+
+  .banner-right-copy{
+    right:2.8%;
+    bottom:6%;
+
+    gap:7px;
+  }
+
+
+  .banner-right-line{
+    height:55px;
+  }
+
+
+  .banner-right-copy p{
+    font-size:
+      clamp(
+        5px,
+        1.2vw,
+        7px
+      );
+
+    line-height:1.45;
+
+    letter-spacing:.13em;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:480px){
+
+  .about-banner,
+  .about-banner .about-banner-image,
+  .about-banner img{
+    height:auto !important;
+  }
+
+
+  .banner-left-copy{
+    left:5%;
+    top:11%;
+  }
+
+
+  .banner-left-copy h2{
+    font-size:4.8vw;
+  }
+
+
+  .banner-description{
+    margin-top:7px;
+
+    font-size:1.8vw;
+  }
+
+
+  .banner-right-line{
+    height:42px;
+  }
+
+}
+
+/* 왼쪽 글씨 가독성 - 조금 더 뿌옇게 */
+.about-banner::after{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.38) 0%,
+      rgba(255,255,255,.28) 40%,
+      rgba(255,255,255,.13) 72%,
+      rgba(255,255,255,0) 100%
+    ) !important;
+}
+
+@media(max-width:768px){
+  .about-banner::after{
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,.36) 0%,
+        rgba(255,255,255,.25) 48%,
+        rgba(255,255,255,0) 100%
+      ) !important;
+  }
+}
+
+/* 왼쪽 글씨 가독성 강화 */
+.about-banner::after{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.52) 0%,
+      rgba(255,255,255,.42) 38%,
+      rgba(255,255,255,.24) 68%,
+      rgba(255,255,255,.08) 86%,
+      rgba(255,255,255,0) 100%
+    ) !important;
+}
+
+@media(max-width:768px){
+  .about-banner::after{
+    width:65%;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,.50) 0%,
+        rgba(255,255,255,.38) 45%,
+        rgba(255,255,255,.16) 75%,
+        rgba(255,255,255,0) 100%
+      ) !important;
   }
 }
