@@ -4,128 +4,343 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SUJEONG PORTFOLIO 2026</title>
+
+  <!-- 포트폴리오 타이포그래피 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500&family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./css/style.css">
   <script src="./js/main.js" defer></script>
 </head>
 <body>
 
-<section class="hero">
+  <!-- =========================
+       HERO
+  ========================== -->
+  <section class="hero" id="top">
 
-  <!--
-    같은 4초 영상을 두 개 겹쳐 재생합니다.
-    마지막 0.65초에서 다음 영상의 첫 장면과 크로스페이드되어
-    일반 loop보다 훨씬 자연스럽게 반복됩니다.
-  -->
-  <div class="hero-media" aria-hidden="true">
-    <video
-      id="heroVideoA"
-      class="hero-video is-active"
-      muted
-      playsinline
-      preload="auto"
-      poster="./img/hero-poster.jpg"
-    >
-      <source src="./video/cherry-main.mp4" type="video/mp4">
-    </video>
+    <div class="hero-media" aria-hidden="true">
+      <video
+        id="heroVideoA"
+        class="hero-video is-active"
+        muted
+        playsinline
+        preload="auto"
+        poster="./img/hero-poster.jpg"
+      >
+        <source src="./video/cherry-main.mp4" type="video/mp4">
+      </video>
 
-    <video
-      id="heroVideoB"
-      class="hero-video"
-      muted
-      playsinline
-      preload="auto"
-    >
-      <source src="./video/cherry-main.mp4" type="video/mp4">
-    </video>
-  </div>
+      <video
+        id="heroVideoB"
+        class="hero-video"
+        muted
+        playsinline
+        preload="auto"
+      >
+        <source src="./video/cherry-main.mp4" type="video/mp4">
+      </video>
+    </div>
 
+    <header class="hero-header">
+      <a href="#top" class="logo">SUJEONG</a>
 
-  <!-- HEADER -->
-  <header class="hero-header">
-    <a href="#" class="logo">SUJEONG</a>
+      <nav class="gnb" aria-label="주 메뉴">
+        <a href="#about">ABOUT</a>
+        <a href="#works">WORKS</a>
+        <a href="#project">PROJECT</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
 
-    <nav class="gnb">
-      <a href="#about">ABOUT</a>
-      <a href="#works">WORKS</a>
-      <a href="#project">PROJECT</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
+      <div class="page-num" aria-hidden="true">
+        <span></span>
+        <b>01</b>
+      </div>
+    </header>
 
-    <div class="page-num">
+    <div class="hero-title">
+      <h1>
+        VISUAL<br>
+        WITH A<br>
+        PURPOSE.
+      </h1>
+
+      <h2>
+        감각적으로 표현하고,<br>
+        명확하게 전달합니다.
+      </h2>
+
+      <div class="small-line"></div>
+
+      <p class="job">
+        WEB DESIGNER · UI DESIGN · PUBLISHING
+      </p>
+
+      <p class="description">
+        제품의 매력을 발견하고,<br>
+        사용자가 한눈에 이해할 수 있는 화면으로 만듭니다.
+      </p>
+    </div>
+
+    <div class="hero-message" aria-hidden="true">
+      <p>
+        GOOD<br>
+        DESIGN<br>
+        BRINGS<br>
+        GOOD<br>
+        THINGS.
+      </p>
       <span></span>
-      <b>01</b>
-    </div>
-  </header>
-
-
-  <!-- MAIN COPY -->
-  <div class="hero-title">
-    <h1>
-      VISUAL<br>
-      WITH A<br>
-      PURPOSE.
-    </h1>
-
-    <h2>
-      감각적으로 표현하고,<br>
-      명확하게 전달합니다.
-    </h2>
-
-    <div class="small-line"></div>
-
-    <p class="job">
-      WEB DESIGNER · UI DESIGN · PUBLISHING
-    </p>
-
-    <p class="description">
-      제품의 매력을 발견하고,<br>
-      사용자가 한눈에 이해할 수 있는 화면으로 만듭니다.
-    </p>
-  </div>
-
-
-  <!-- RIGHT COPY -->
-  <div class="hero-message">
-    <p>
-      GOOD<br>
-      DESIGN<br>
-      BRINGS<br>
-      GOOD<br>
-      THINGS.
-    </p>
-
-    <span></span>
-
-    <p class="sub">
-      ALWAYS<br>
-      FOR A BETTER<br>
-      EXPERIENCE.
-    </p>
-  </div>
-
-
-  <!-- BOTTOM -->
-  <div class="hero-bottom">
-    <div class="portfolio">
-      <span class="portfolio-text">SUJEONG PORTFOLIO 2026</span>
-      <span class="portfolio-line"></span>
+      <p class="sub">
+        ALWAYS<br>
+        FOR A BETTER<br>
+        EXPERIENCE.
+      </p>
     </div>
 
-    <a href="#about" class="scroll-btn">
-      <span>SCROLL<br>TO EXPLORE</span>
-      <b>→</b>
-    </a>
+    <div class="hero-bottom">
+      <div class="portfolio">
+        <span class="portfolio-text">SUJEONG PORTFOLIO 2026</span>
+        <span class="portfolio-line"></span>
+      </div>
+
+      <a href="#about" class="scroll-btn">
+        <span>SCROLL<br>TO EXPLORE</span>
+        <b>→</b>
+      </a>
+    </div>
+  </section>
+
+
+  <main>
+    <!-- =========================
+         ABOUT
+    ========================== -->
+    <section id="about" class="about-section">
+
+      <!-- ABOUT INTRO -->
+      <div class="about-intro section-inner">
+        <div class="about-index reveal-right">
+          <strong>02</strong>
+          <span></span>
+          <p>ABOUT</p>
+        </div>
+
+        <div class="about-copy">
+          <h2 class="about-kicker reveal-down">
+            감각적인 디자인으로<br>
+            일상을 더 특별하게<span class="pink-dot">.</span>
+          </h2>
+
+          <p class="about-description reveal-right">
+            브랜드와 제품이 가진 이야기를 시각적으로 정리하고,<br>
+            사용자가 쉽게 이해할 수 있는 화면으로 표현하는 것을 좋아합니다.<br>
+            아이디어가 실제 경험이 되는 과정을 소중히 생각합니다.
+          </p>
+
+          <button type="button" class="resume-open reveal-right" id="resumeOpen">
+            <span>VIEW RESUME</span>
+            <b>→</b>
+          </button>
+        </div>
+
+        <span class="about-divider" aria-hidden="true"></span>
+
+        <div class="about-english reveal-down">
+          <span class="about-label">ABOUT ME</span>
+          <h3>
+            I DESIGN<br>
+            A MORE<br>
+            BEAUTIFUL<br>
+            DAILY LIFE<span class="pink-dot">.</span>
+          </h3>
+          <p>UI/UX DESIGNER<br>&amp; WEB PUBLISHER</p>
+        </div>
+      </div>
+
+      <!-- PRINCIPLE -->
+      <div class="principle-block">
+        <div class="section-inner">
+          <div class="section-heading">
+            <span>my design principle</span>
+            <h2>CLARITY IN BEAUTY</h2>
+          </div>
+
+          <div class="principle-grid">
+            <article class="principle-card">
+              <span class="principle-no">01</span>
+              <h3>ATTRACTIVE</h3>
+              <strong>시선을 머물게 하는 비주얼</strong>
+              <p>제품과 브랜드의 분위기를 살려<br>첫눈에 매력이 전달되는<br>화면을 만듭니다.</p>
+            </article>
+
+            <article class="principle-card">
+              <span class="principle-no">02</span>
+              <h3>CLEAR</h3>
+              <strong>한눈에 이해되는 정보</strong>
+              <p>정보의 중요도에 따라<br>크기와 위치, 여백을<br>정리합니다.</p>
+            </article>
+
+            <article class="principle-card">
+              <span class="principle-no">03</span>
+              <h3>BALANCE</h3>
+              <strong>감성과 정보의 균형</strong>
+              <p>예쁜 화면에만 머물지 않고<br>보기 좋은 것과 읽기 쉬운 것을<br>함께 고민합니다.</p>
+            </article>
+
+            <article class="principle-card">
+              <span class="principle-no">04</span>
+              <h3>CONSISTENT</h3>
+              <strong>일관된 브랜드 무드</strong>
+              <p>컬러, 타이포그래피, 이미지 톤을<br>맞춰 하나의 분위기로<br>연결합니다.</p>
+            </article>
+
+            <article class="principle-card">
+              <span class="principle-no">05</span>
+              <h3>USABLE</h3>
+              <strong>실제로 구현되는 디자인</strong>
+              <p>Figma에서 끝나는 시안이 아니라<br>웹에서 구현 가능한 화면을<br>생각합니다.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <!-- 띠배너: 글자까지 포함된 최종 이미지 -->
+      <figure class="about-banner">
+        <img src="./img/about-banner.png" alt="벚꽃길에 서 있는 인물과 MAKE EVERYDAY A LITTLE BRIGHTER 문구가 있는 봄 포트폴리오 배너">
+      </figure>
+
+      <!-- DESIGN CAPABILITIES -->
+      <div class="expertise-block">
+        <div class="section-inner expertise-inner">
+          <div class="section-heading expertise-heading">
+            <span>design capabilities</span>
+            <h2>디자인 역량</h2>
+          </div>
+
+          <div class="skills-layout">
+            <aside class="skills-side" aria-hidden="true">
+              <span></span>
+              <p>SKILLS</p>
+              <span></span>
+              <small>From<br>Visual to<br>Interaction.</small>
+            </aside>
+
+            <div class="skills-table">
+              <article class="skill-row">
+                <span class="skill-no">01</span>
+                <div class="skill-name">
+                  <h3>PHOTOSHOP</h3>
+                  <p>VISUAL DESIGN / IMAGE EDITING</p>
+                </div>
+                <div class="skill-list">
+                  <p>· 이미지 합성 및 보정</p>
+                  <p>· 제품 및 인물 이미지 리터칭</p>
+                  <p>· 배너 · 팝업 · 이벤트 이미지 제작</p>
+                  <p>· 포스터 및 프로모션 콘텐츠 디자인</p>
+                  <p>· 상품 상세페이지 이미지 구성</p>
+                </div>
+              </article>
+
+              <article class="skill-row">
+                <span class="skill-no">02</span>
+                <div class="skill-name">
+                  <h3>ILLUSTRATOR</h3>
+                  <p>GRAPHIC DESIGN / VECTOR</p>
+                </div>
+                <div class="skill-list">
+                  <p>· 아이콘 및 그래픽 에셋 제작</p>
+                  <p>· 로고 및 타이포그래피 편집</p>
+                  <p>· 벡터 이미지 제작 및 수정</p>
+                  <p>· 웹 디자인용 그래픽 요소 제작</p>
+                  <p>· 브랜드 비주얼 요소 구성</p>
+                </div>
+              </article>
+
+              <article class="skill-row">
+                <span class="skill-no">03</span>
+                <div class="skill-name">
+                  <h3>FIGMA</h3>
+                  <p>UI DESIGN / PROTOTYPE</p>
+                </div>
+                <div class="skill-list">
+                  <p>· 웹페이지 UI 디자인</p>
+                  <p>· 와이어프레임 및 화면 설계</p>
+                  <p>· Auto Layout을 활용한 레이아웃 구성</p>
+                  <p>· Component 기반 UI 제작</p>
+                  <p>· Prototype 페이지 전환 및 인터랙션 구현</p>
+                </div>
+              </article>
+
+              <article class="skill-row">
+                <span class="skill-no">04</span>
+                <div class="skill-name">
+                  <h3>HTML / CSS</h3>
+                  <p>WEB PUBLISHING</p>
+                </div>
+                <div class="skill-list">
+                  <p>· 웹페이지 구조 및 레이아웃 구현</p>
+                  <p>· Flex · Grid를 활용한 화면 구성</p>
+                  <p>· PC · Tablet · Mobile 반응형 구현</p>
+                  <p>· 디자인 시안을 실제 웹 화면으로 퍼블리싱</p>
+                  <p>· 기존 CSS 수정 및 스타일 조정</p>
+                </div>
+              </article>
+
+              <article class="skill-row">
+                <span class="skill-no">05</span>
+                <div class="skill-name">
+                  <h3>JAVASCRIPT / JQUERY</h3>
+                  <p>WEB INTERACTION</p>
+                </div>
+                <div class="skill-list">
+                  <p>· 메뉴 및 탭 인터랙션</p>
+                  <p>· 팝업 열기 · 닫기</p>
+                  <p>· 이미지 슬라이드</p>
+                  <p>· 클릭 이벤트 및 화면 동작 구현</p>
+                  <p>· 기존 JavaScript 코드 수정 및 적용</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="scroll-caption" aria-hidden="true">
+              <span>SCROLL DOWN</span>
+              <b>↓</b>
+            </div>
+
+            <span class="petal petal-one" aria-hidden="true"></span>
+            <span class="petal petal-two" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 나머지 섹션은 기존 작업 이어서 사용 -->
+    <section id="works" class="dummy-section"><h2>WORKS</h2></section>
+    <section id="project" class="dummy-section"><h2>PROJECT</h2></section>
+    <section id="contact" class="dummy-section"><h2>CONTACT</h2></section>
+  </main>
+
+  <!-- =========================
+       RESUME POPUP
+       업로드한 이력서 이미지를 그대로 표시
+  ========================== -->
+  <div class="resume-modal" id="resumeModal" aria-hidden="true">
+    <div class="resume-backdrop" data-resume-close></div>
+
+    <section class="resume-image-card" role="dialog" aria-modal="true" aria-label="배수정 이력서">
+      <button type="button" class="resume-close" data-resume-close aria-label="이력서 팝업 닫기">×</button>
+
+      <div class="resume-image-scroll">
+        <img
+          src="./img/resume.jpg"
+          alt="배수정 UI UX 디자이너 이력서"
+          class="resume-image"
+        >
+      </div>
+    </section>
   </div>
-
-</section>
-
-
-<main>
-  <section id="about" class="dummy-section"><h2>ABOUT</h2></section>
-  <section id="works" class="dummy-section"><h2>WORKS</h2></section>
-  <section id="project" class="dummy-section"><h2>PROJECT</h2></section>
-  <section id="contact" class="dummy-section"><h2>CONTACT</h2></section>
-</main>
 
 </body>
 </html>
