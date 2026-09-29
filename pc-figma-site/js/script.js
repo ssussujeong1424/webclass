@@ -55,6 +55,155 @@
   restItems.forEach((item) => observer.observe(item));
 })();
 
+
+// AESOP brand-direction icons: grow slightly, then settle once when the section enters.
+(function initBrandIconPulse(){
+  const icons = Array.from(document.querySelectorAll('[data-icon-pulse]'));
+  if (!icons.length) return;
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  icons.forEach((icon) => {
+    icon.style.setProperty('--pulse-delay', `${Number(icon.dataset.pulseDelay || 0)}ms`);
+  });
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    icons.forEach((icon) => icon.classList.add('is-icon-pulse'));
+    return;
+  }
+  const grid = document.querySelector('.direction-grid');
+  if (!grid) return;
+  const observer = new IntersectionObserver((entries) => {
+    if (!entries[0]?.isIntersecting) return;
+    icons.forEach((icon) => icon.classList.add('is-icon-pulse'));
+    observer.disconnect();
+  }, { threshold: 0.35, rootMargin: '0px 0px -8% 0px' });
+  observer.observe(grid);
+})();
+
+// CONTACT: type the whole left message one Korean character at a time.
+(function initContactTyping(){
+  const root = document.querySelector('[data-contact-typing]');
+  if (!root) return;
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  const blocks = Array.from(root.querySelectorAll('h2, p'));
+  blocks.forEach((el) => {
+    const h = el.getBoundingClientRect().height;
+    if (h) el.style.minHeight = `${h}px`;
+  });
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node){
+      return node.nodeValue && node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  if (!nodes.length) return;
+
+  const originals = nodes.map((node) => node.nodeValue);
+  nodes.forEach((node) => { node.nodeValue = ''; });
+
+  let started = false;
+  const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
+  const caret = document.createElement('span');
+  caret.className = 'typing-caret';
+  caret.setAttribute('aria-hidden', 'true');
+
+  async function typeAll(){
+    if (started) return;
+    started = true;
+    for (let i = 0; i < nodes.length; i += 1) {
+      const node = nodes[i];
+      const chars = Array.from(originals[i]);
+      node.parentNode.insertBefore(caret, node.nextSibling);
+      const inBody = !!node.parentElement?.closest('.contact-copy > p');
+      const speed = inBody ? 46 : 60;
+      for (const ch of chars) {
+        node.nodeValue += ch;
+        await wait(ch === ' ' ? Math.max(18, speed * .42) : speed);
+      }
+      await wait(inBody ? 95 : 130);
+    }
+    caret.remove();
+  }
+
+  if (!('IntersectionObserver' in window)) {
+    typeAll();
+    return;
+  }
+  const observer = new IntersectionObserver((entries) => {
+    if (!entries[0]?.isIntersecting) return;
+    observer.disconnect();
+    window.setTimeout(typeAll, 180);
+  }, { threshold: 0.28, rootMargin: '0px 0px -10% 0px' });
+  observer.observe(root);
+})();
+
+
+// v27 — project image reveals.
+// AESOP: PC → tablet → mobile, left-to-right sequential reveal.
+// HOMFIT RESPONSIVE: keep the center-out reveal.
+(function initProjectImageReveals(){
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function revealAesop(items){
+    items.forEach((el) => {
+      if (el.dataset.devicePlayed === 'true') return;
+      el.dataset.devicePlayed = 'true';
+      const delay = Number(el.dataset.deviceDelay || 0);
+      if (reduceMotion || typeof el.animate !== 'function') return;
+      el.animate([
+        { opacity: 0, transform: 'translate3d(-42px,0,0) scale(.985)', clipPath: 'inset(0 100% 0 0)' },
+        { opacity: 1, transform: 'translate3d(0,0,0) scale(1)', clipPath: 'inset(0 0 0 0)' }
+      ], {
+        duration: 2100,
+        delay,
+        easing: 'cubic-bezier(.22,1,.36,1)',
+        fill: 'both'
+      });
+    });
+  }
+
+  function revealCenter(items){
+    items.forEach((el) => {
+      if (el.dataset.devicePlayed === 'true') return;
+      el.dataset.devicePlayed = 'true';
+      const delay = Number(el.dataset.deviceDelay || 0);
+      if (reduceMotion || typeof el.animate !== 'function') return;
+      el.animate([
+        { opacity: 0, transform: 'scale(.965)', clipPath: 'inset(0 50% 0 50%)' },
+        { opacity: 1, transform: 'scale(1)', clipPath: 'inset(0 0 0 0)' }
+      ], {
+        duration: 2100,
+        delay,
+        easing: 'cubic-bezier(.22,1,.36,1)',
+        fill: 'both'
+      });
+    });
+  }
+
+  const configs = [
+    { selector: '[data-device-reveal="aesop"]', root: '#aesop', play: revealAesop },
+    { selector: '[data-device-reveal="responsive"]', root: '.responsive-visual', play: revealCenter }
+  ];
+
+  configs.forEach(({ selector, root, play }) => {
+    const items = Array.from(document.querySelectorAll(selector));
+    if (!items.length) return;
+    const target = document.querySelector(root) || items[0];
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      if (!reduceMotion) play(items);
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      play(items);
+      observer.disconnect();
+    }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
+    observer.observe(target);
+  });
+})();
+
 const resumeModal = document.querySelector('#resumeModal');
 const resumeOpen = document.querySelector('[data-resume-open]');
 const resumeClose = document.querySelector('[data-resume-close]');
@@ -206,8 +355,8 @@ if (statusbar) {
 
 // WORKS banner slider: 배너 이미지 + 설명을 한 세트로 이동
 (function initWorksBannerSlider(){
-  const AUTO_MS = 3000;
-  const TRANSITION_MS = 450;
+  const AUTO_MS = 3400;
+  const TRANSITION_MS = 720;
   const EASING = 'cubic-bezier(.22,1,.36,1)';
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -351,15 +500,22 @@ if (statusbar) {
     queueNormalize();
   }
 
+  let firstAutoPending = true;
+
   function stopAuto(){
-    if (timer) window.clearInterval(timer);
+    if (timer) window.clearTimeout(timer);
     timer = 0;
   }
 
   function startAuto(){
     stopAuto();
     if (!sectionActive || reduceMotion || document.hidden || dragging) return;
-    timer = window.setInterval(() => go(1), AUTO_MS);
+    const delay = firstAutoPending ? 1000 : AUTO_MS;
+    timer = window.setTimeout(() => {
+      firstAutoPending = false;
+      go(1);
+      startAuto();
+    }, delay);
   }
 
   function clientXFromEvent(event){
@@ -462,13 +618,13 @@ if (statusbar) {
   const thumbs = Array.from(root.querySelectorAll('[data-poster-index]'));
   if (!posterImage || !posterCopy || thumbs.length === 0) return;
 
-  const AUTO_MS = 3400;
-  const FADE_MS = 180;
+  const AUTO_MS = 3800;
+  const FADE_MS = 340;
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const posters = [
     {
-      image: './img/poster-chanel.png',
+      image: './img/poster-chanel.jpg',
       alt: 'CHANEL LE VERNIS 포스터',
       category: 'BEAUTY POSTER',
       title: 'CHANEL<br>LE VERNIS',
@@ -477,7 +633,7 @@ if (statusbar) {
       tool: 'Photoshop'
     },
     {
-      image: './img/poster-chair.png',
+      image: './img/poster-chair.jpg',
       alt: 'Nismaaya Wing Chair 포스터',
       category: 'FURNITURE POSTER',
       title: 'Nismaaya<br>Wing Chair',
@@ -486,7 +642,7 @@ if (statusbar) {
       tool: 'Photoshop'
     },
     {
-      image: './img/poster-light.png',
+      image: './img/poster-light.jpg',
       alt: '&Tradition Table Lamp 포스터',
       category: 'INTERIOR POSTER',
       title: '&amp;Tradition<br>Table Lamp',
@@ -495,7 +651,7 @@ if (statusbar) {
       tool: 'Photoshop'
     },
     {
-      image: './img/poster-aircon.png',
+      image: './img/poster-aircon.jpg',
       alt: 'LG WHISEN Air Conditioner 포스터',
       category: 'PRODUCT POSTER',
       title: 'LG WHISEN<br>Air Conditioner',
@@ -514,6 +670,7 @@ if (statusbar) {
   let autoTimer = null;
   let transitionToken = 0;
   let sectionActive = false;
+  let firstAutoPending = true;
 
   function updateThumbs(index) {
     thumbs.forEach((button, i) => {
@@ -541,9 +698,11 @@ if (statusbar) {
   function scheduleNext() {
     window.clearTimeout(autoTimer);
     if (!sectionActive || reduceMotion) return;
+    const delay = firstAutoPending ? 1000 : AUTO_MS;
     autoTimer = window.setTimeout(() => {
+      firstAutoPending = false;
       showPoster((currentIndex + 1) % posters.length);
-    }, AUTO_MS);
+    }, delay);
   }
 
   function showPoster(index, immediate = false) {
@@ -591,6 +750,7 @@ if (statusbar) {
 
   thumbs.forEach((button) => {
     button.addEventListener('click', () => {
+      firstAutoPending = false;
       showPoster(Number(button.dataset.posterIndex));
     });
 
@@ -698,7 +858,7 @@ if (statusbar) {
   const copyEl = root.querySelector('[data-popup-copy]');
   if (cards.length !== 6 || bars.length !== 6 || !titleEl || !copyEl) return;
 
-  const AUTO_MS = 3300;
+  const AUTO_MS = 3700;
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const popups = [
@@ -713,6 +873,7 @@ if (statusbar) {
   let current = 0;
   let timer = null;
   let sectionActive = false;
+  let firstAutoPending = true;
 
   function normalize(index){
     return (index + cards.length) % cards.length;
@@ -754,13 +915,16 @@ if (statusbar) {
   function schedule(){
     stopAuto();
     if (!sectionActive || reduceMotion || document.hidden) return;
+    const delay = firstAutoPending ? 1000 : AUTO_MS;
     timer = window.setTimeout(() => {
+      firstAutoPending = false;
       render(current + 1);
       schedule();
-    }, AUTO_MS);
+    }, delay);
   }
 
   function select(index){
+    firstAutoPending = false;
     render(index);
     schedule();
   }
@@ -798,5 +962,223 @@ if (statusbar) {
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) stopAuto();
     else schedule();
+  });
+})();
+
+// v29 — HOMFIT 12-column grid: columns drop from top; arches draw from the label outward.
+(function initHomfitGridReveal(){
+  const grid = document.querySelector('.column-grid');
+  const curves = Array.from(document.querySelectorAll('.grid-label-curve'));
+  if (!grid || !curves.length) return;
+
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  grid.classList.add('grid-reveal-ready');
+  curves.forEach((curve) => {
+    curve.classList.add('grid-curve-ready');
+    const path = curve.querySelector('path');
+    if (path && typeof path.getTotalLength === 'function') {
+      const len = Math.ceil(path.getTotalLength());
+      path.style.setProperty('--curve-length', String(len));
+    }
+  });
+
+  function play(){
+    grid.classList.add('is-grid-in');
+    curves.forEach((curve) => curve.classList.add('is-grid-curve-in'));
+  }
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    play();
+    return;
+  }
+
+  const target = document.querySelector('.grid-system-label') || grid;
+  const observer = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    play();
+    observer.disconnect();
+  }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+  observer.observe(target);
+})();
+
+
+// v33 — HOMFIT mobile swipe arrow draws/reveals from left to right.
+(function initHomfitSwipeArrowReveal(){
+  const arrow = document.querySelector('.swipe-arrow');
+  if (!arrow) return;
+
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  arrow.classList.add('swipe-arrow-reveal-ready');
+
+  const play = () => arrow.classList.add('is-swipe-arrow-in');
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    play();
+    return;
+  }
+
+  const target = document.querySelector('.swipe-copy') || arrow;
+  const observer = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    play();
+    observer.disconnect();
+  }, { threshold: .15, rootMargin: '0px 0px -8% 0px' });
+
+  observer.observe(target);
+})();
+
+
+// v36 — AESOP Page Design motion refinements.
+// Best Seller image wipes open left → right, while its copy drops in from above.
+// Product List image unfolds downward while the right copy drops in at the same time.
+(function initAesopPageDesignReveals(){
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const best = document.querySelector('[data-best-wipe]');
+  if (best && !reduceMotion) {
+    const playBest = () => {
+      if (best.dataset.motionPlayed === 'true') return;
+      best.dataset.motionPlayed = 'true';
+      if (typeof best.animate !== 'function') return;
+      best.animate([
+        { opacity: .12, clipPath: 'inset(0 100% 0 0)', transform: 'translate3d(-20px,0,0)' },
+        { opacity: 1, clipPath: 'inset(0 0 0 0)', transform: 'translate3d(0,0,0)' }
+      ], {
+        duration: 1750,
+        easing: 'cubic-bezier(.22,1,.36,1)',
+        fill: 'both'
+      });
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        playBest();
+        io.disconnect();
+      }, { threshold: .14, rootMargin: '0px 0px -8% 0px' });
+      io.observe(best);
+    } else {
+      playBest();
+    }
+  }
+
+  const productImage = document.querySelector('.product-list-composite[data-product-drop]');
+  const productCopy = document.querySelector('.note-product[data-product-drop]');
+  if ((productImage || productCopy) && !reduceMotion) {
+    const playProduct = () => {
+      if (productImage && productImage.dataset.motionPlayed !== 'true') {
+        productImage.dataset.motionPlayed = 'true';
+        if (typeof productImage.animate === 'function') {
+          productImage.animate([
+            {
+              opacity: 0,
+              clipPath: 'inset(0 0 100% 0)',
+              transform: 'translate3d(0,-54px,0)',
+              transformOrigin: '50% 0%'
+            },
+            {
+              opacity: .82,
+              clipPath: 'inset(0 0 36% 0)',
+              transform: 'translate3d(0,-10px,0)',
+              transformOrigin: '50% 0%'
+            },
+            {
+              opacity: 1,
+              clipPath: 'inset(0 0 0 0)',
+              transform: 'translate3d(0,0,0)',
+              transformOrigin: '50% 0%'
+            }
+          ], {
+            duration: 1500,
+            easing: 'cubic-bezier(.22,1,.36,1)',
+            fill: 'both'
+          });
+        }
+      }
+
+      if (productCopy && productCopy.dataset.motionPlayed !== 'true') {
+        productCopy.dataset.motionPlayed = 'true';
+        if (typeof productCopy.animate === 'function') {
+          productCopy.animate([
+            { opacity: 0, transform: 'translate3d(0,-38px,0)' },
+            { opacity: 1, transform: 'translate3d(0,0,0)' }
+          ], {
+            duration: 1150,
+            delay: 0,
+            easing: 'cubic-bezier(.22,1,.36,1)',
+            fill: 'both'
+          });
+        }
+      }
+    };
+
+    const target = productImage || productCopy;
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        playProduct();
+        io.disconnect();
+      }, { threshold: .14, rootMargin: '0px 0px -8% 0px' });
+      io.observe(target);
+    } else {
+      playProduct();
+    }
+  }
+})();
+
+// v38 — AESOP Main Page motion refinements.
+// 1) New-product composition spreads outward from the center; its right copy drops in.
+// 2) Hero left circle + copy and right circle spread outward together.
+(function initAesopMainPageRevealsV38(){
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  const canAnimate = typeof Element !== 'undefined' && Element.prototype && typeof Element.prototype.animate === 'function';
+  if (!canAnimate) return;
+
+  function observeOnce(target, play, options = {}){
+    if (!target) return;
+    if (!('IntersectionObserver' in window)) { play(); return; }
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      io.disconnect();
+      play();
+    }, {
+      threshold: options.threshold ?? 0.15,
+      rootMargin: options.rootMargin ?? '0px 0px -8% 0px'
+    });
+    io.observe(target);
+  }
+
+  // New product section: entrance animation intentionally disabled (v40).
+
+  // Hero banner: left circle + its copy + right circle expand from the center at the same time.
+  const heroCircles = Array.from(document.querySelectorAll('[data-aesop-hero-circle]'));
+  const heroCopy = document.querySelector('[data-aesop-hero-spread]');
+  const heroTarget = document.querySelector('.aesop-laptop-shot') || heroCopy;
+  observeOnce(heroTarget, () => {
+    heroCircles.forEach((el) => {
+      if (el.dataset.v38Played === 'true') return;
+      el.dataset.v38Played = 'true';
+      el.animate([
+        { opacity: 0, transform: 'scale(.18)' },
+        { opacity: 1, transform: 'scale(1)' }
+      ], {
+        duration: 1750,
+        easing: 'cubic-bezier(.16,1,.3,1)',
+        fill: 'both'
+      });
+    });
+
+    if (heroCopy && heroCopy.dataset.v38Played !== 'true') {
+      heroCopy.dataset.v38Played = 'true';
+      heroCopy.animate([
+        { opacity: 0, clipPath: 'inset(0 50% 0 50%)', transform: 'scale(.97)' },
+        { opacity: 1, clipPath: 'inset(0 0 0 0)', transform: 'scale(1)' }
+      ], {
+        duration: 1750,
+        easing: 'cubic-bezier(.16,1,.3,1)',
+        fill: 'both'
+      });
+    }
   });
 })();
