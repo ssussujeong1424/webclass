@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Gowun+Batang:wght@700&display=swap" rel="stylesheet">
   <script>document.documentElement.classList.add('motion-js');</script>
-  <link rel="stylesheet" href="./css/style.css?v=46">
+  <link rel="stylesheet" href="./css/style.css?v=51">
 </head>
 <body>
   <main class="portfolio">
@@ -246,8 +246,8 @@
     <section class="homfit-case figma-section" id="homfit-case">
       <img class="homfit-bg" src="./img/homfit-beige-bg.svg" alt="">
       <img class="homfit-story-bg" data-homfit-story-reveal src="./img/homfit-story.png" alt="">
-      <h2 class="homfit-section-title story-title" data-homfit-story-reveal>브랜드 스토리</h2>
-      <div class="homfit-story-copy" data-homfit-story-reveal><p><b>HOMFIT은 일상의 공간을 더 편안하고 기분 좋게 만들어가는 홈 · 리빙 브랜드입니다.</b><br>집은 단순히 머무는 공간을 넘어, 취향과 생활 방식이 드러나는 소중한 공간입니다.</p><p>실용적인 기능을 기본으로 하되, 따뜻한 컬러와 편안한 분위기를 더해<br>누구나 부담 없이 자신의 공간에 어울리는 제품을 선택할 수 있도록 구성했습니다.</p><p>복잡한 요소는 덜어내고, 제품과 공간의 분위기가 자연스럽게 어우러질 수 있도록<br><b>편안함 · 실용성 · 감성</b>을 중심으로 HOMFIT만의 라이프 스타일을 제안합니다.</p></div>
+      <h2 class="homfit-section-title story-title">브랜드 스토리</h2>
+      <div class="homfit-story-copy"><p><b>HOMFIT은 일상의 공간을 더 편안하고 기분 좋게 만들어가는 홈 · 리빙 브랜드입니다.</b><br>집은 단순히 머무는 공간을 넘어, 취향과 생활 방식이 드러나는 소중한 공간입니다.</p><p>실용적인 기능을 기본으로 하되, 따뜻한 컬러와 편안한 분위기를 더해<br>누구나 부담 없이 자신의 공간에 어울리는 제품을 선택할 수 있도록 구성했습니다.</p><p>복잡한 요소는 덜어내고, 제품과 공간의 분위기가 자연스럽게 어우러질 수 있도록<br><b>편안함 · 실용성 · 감성</b>을 중심으로 HOMFIT만의 라이프 스타일을 제안합니다.</p></div>
 
       <h2 class="homfit-section-title design-system-title">Design System</h2>
       <div class="homfit-design-system">
@@ -276,11 +276,13 @@
     <section class="contact-section figma-section" id="contact">
       <div class="badge contact-badge"><span>CONTACT</span><img src="./img/badge.svg" alt=""></div>
       <div class="contact-copy" data-contact-typing><h2>좋은 디자인으로<br>더 나은 경험을<br><em>만들어가고 싶습니다.</em></h2><p>끝까지 봐주셔서 감사합니다.<br>더 좋은 경험을 만드는<br>디자이너가 되겠습니다.</p></div>
-      <div class="contact-info"><h3>BAE SUJEONG</h3><dl><div><dt>TEL</dt><dd>010-3782-1424</dd></div><div><dt>E-MAIL</dt><dd>ssussujeong1424@gmail.com</dd></div></dl></div>
+      <div class="contact-info"><h3 data-contact-name>BAE SUJEONG</h3><dl><div><dt>TEL</dt><dd><button class="contact-copy-value" type="button" data-copy-text="010-3782-1424" aria-label="전화번호 복사">010-3782-1424</button></dd></div><div><dt>E-MAIL</dt><dd><button class="contact-copy-value" type="button" data-copy-text="ssussujeong1424@gmail.com" aria-label="이메일 주소 복사">ssussujeong1424@gmail.com</button></dd></div></dl></div>
       <figure class="contact-photo image-crop"><img src="./img/contact.png" alt="포트폴리오 엔딩 이미지"></figure>
       <p class="thank thank-a">THANK</p><p class="thank thank-b">YOU</p><p class="thanks-viewing">THANKS FOR VIEWING<br>PORTFOLIO.</p><div class="contact-tags"><span>UI/UX</span><i></i><span>WEB DESIGN</span><i></i><span>PUBLISHING</span></div><i class="contact-line"></i>
     </section>
   </main>
+
+  <div class="copy-toast" data-copy-toast role="status" aria-live="polite" aria-atomic="true">내용이 복사되었습니다.</div>
 
   <div class="resume-modal" id="resumeModal" aria-hidden="true">
     <div class="resume-modal__dialog" role="dialog" aria-modal="true" aria-label="배수정 이력서">
@@ -299,6 +301,6 @@
       </div>
     </div>
   </div>
-  <script src="./js/script.js?v=47"></script>
+  <script src="./js/script.js?v=50"></script>
 </body>
 </html>

@@ -125,6 +125,15 @@
       await wait(inBody ? 95 : 130);
     }
     caret.remove();
+
+    // After the final typing line finishes, emphasize the contact name once.
+    const contactName = document.querySelector('[data-contact-name]');
+    if (contactName) {
+      contactName.classList.remove('is-contact-name-pulse');
+      // Force a reflow so the one-shot animation can reliably restart.
+      void contactName.offsetWidth;
+      contactName.classList.add('is-contact-name-pulse');
+    }
   }
 
   if (!('IntersectionObserver' in window)) {
@@ -1200,22 +1209,19 @@ if (statusbar) {
     io.observe(target);
   }
 
-  // Brand Story: base content remains visible; animation is applied only when it can run.
-  const storyItems = Array.from(document.querySelectorAll('[data-homfit-story-reveal]'));
-  if (storyItems.length && !reduceMotion && typeof storyItems[0].animate === 'function') {
-    observeOnce(storyItems[0], () => {
-      storyItems.forEach((el, index) => {
-        if (el.dataset.v46Played === 'true') return;
-        el.dataset.v46Played = 'true';
-        el.animate([
-          { opacity: 0, clipPath: 'inset(0 50% 0 50%)', transform: 'scaleX(.96)' },
-          { opacity: 1, clipPath: 'inset(0 0 0 0)', transform: 'scaleX(1)' }
-        ], {
-          duration: 1650,
-          delay: index * 90,
-          easing: 'cubic-bezier(.16,1,.3,1)',
-          fill: 'both'
-        });
+  // Brand Story: animate only the background image. Text stays static so it can never be clipped.
+  const storyBg = document.querySelector('.homfit-story-bg[data-homfit-story-reveal]');
+  if (storyBg && !reduceMotion && typeof storyBg.animate === 'function') {
+    observeOnce(storyBg, () => {
+      if (storyBg.dataset.v49Played === 'true') return;
+      storyBg.dataset.v49Played = 'true';
+      storyBg.animate([
+        { opacity: 0, clipPath: 'inset(0 50% 0 50%)', transform: 'scaleX(.97)' },
+        { opacity: 1, clipPath: 'inset(0 0 0 0)', transform: 'scaleX(1)' }
+      ], {
+        duration: 1500,
+        easing: 'cubic-bezier(.16,1,.3,1)',
+        fill: 'both'
       });
     });
   }
@@ -1249,4 +1255,60 @@ if (statusbar) {
       if (!document.hidden) tryPlay();
     });
   }
+})();
+
+
+// v48 — CONTACT phone/e-mail click-to-copy with a small confirmation popup.
+(function initContactCopy(){
+  const triggers = Array.from(document.querySelectorAll('[data-copy-text]'));
+  const toast = document.querySelector('[data-copy-toast]');
+  if (!triggers.length || !toast) return;
+
+  let toastTimer = 0;
+
+  function showToast(message){
+    window.clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.add('is-visible');
+    toastTimer = window.setTimeout(() => {
+      toast.classList.remove('is-visible');
+    }, 1700);
+  }
+
+  async function copyText(value){
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(value);
+      return true;
+    }
+
+    const helper = document.createElement('textarea');
+    helper.value = value;
+    helper.setAttribute('readonly', '');
+    helper.style.position = 'fixed';
+    helper.style.left = '-9999px';
+    helper.style.top = '0';
+    document.body.appendChild(helper);
+    helper.select();
+    helper.setSelectionRange(0, helper.value.length);
+    let copied = false;
+    try {
+      copied = document.execCommand('copy');
+    } catch (_) {
+      copied = false;
+    }
+    helper.remove();
+    return copied;
+  }
+
+  triggers.forEach((button) => {
+    button.addEventListener('click', async () => {
+      const value = button.dataset.copyText || button.textContent.trim();
+      try {
+        const copied = await copyText(value);
+        showToast(copied ? '내용이 복사되었습니다.' : '복사하지 못했습니다.');
+      } catch (_) {
+        showToast('복사하지 못했습니다.');
+      }
+    });
+  });
 })();

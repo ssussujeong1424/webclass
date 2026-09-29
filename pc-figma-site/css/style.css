@@ -1324,3 +1324,576 @@ body.detail-modal-open{overflow:hidden}
 @media (min-width:1201px) and (prefers-reduced-motion:reduce){
   .aesop-forest-video{display:block!important;visibility:visible!important;opacity:1!important}
 }
+
+
+/* v48 — CONTACT typing completion emphasis + click-to-copy toast */
+@keyframes contactNameEmphasisOnce{
+  0%,100%{transform:scale(1)}
+  48%{transform:scale(1.075)}
+  72%{transform:scale(.992)}
+}
+.contact-info h3[data-contact-name]{
+  transform-origin:left center;
+}
+.contact-info h3[data-contact-name].is-contact-name-pulse{
+  animation:contactNameEmphasisOnce .9s cubic-bezier(.22,1,.36,1) both;
+}
+.contact-copy-value{
+  appearance:none;
+  -webkit-appearance:none;
+  border:0;
+  padding:0;
+  margin:0;
+  background:transparent;
+  color:inherit;
+  font:inherit;
+  letter-spacing:inherit;
+  line-height:inherit;
+  text-align:left;
+  cursor:pointer;
+}
+@media (hover:hover) and (pointer:fine){
+  .contact-copy-value:hover{opacity:.62}
+}
+.contact-copy-value:focus-visible{
+  outline:1px solid currentColor;
+  outline-offset:4px;
+}
+.copy-toast{
+  position:fixed;
+  left:50%;
+  bottom:42px;
+  z-index:10020;
+  transform:translate3d(-50%,18px,0) scale(.98);
+  padding:14px 22px;
+  border:1px solid rgba(34,34,33,.12);
+  border-radius:999px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 10px 32px rgba(34,34,33,.12);
+  color:#222221;
+  font-family:Pretendard,Arial,sans-serif;
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:.35px;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .28s ease,transform .36s cubic-bezier(.22,1,.36,1),visibility 0s linear .36s;
+}
+.copy-toast.is-visible{
+  opacity:1;
+  visibility:visible;
+  transform:translate3d(-50%,0,0) scale(1);
+  transition-delay:0s;
+}
+@media (max-width:767px){
+  .copy-toast{bottom:24px;max-width:calc(100vw - 40px);white-space:nowrap}
+}
+@media (prefers-reduced-motion:reduce){
+  .contact-info h3[data-contact-name].is-contact-name-pulse{animation:none!important}
+  .copy-toast{transition:none!important}
+}
+
+/* =========================================================
+   v50 — RESPONSIVE REBUILD
+   Target breakpoints: 1024 / 768 / 402
+   Goal: keep every meaningful image visible, remove desktop
+   clipping/absolute overlap, and reflow content vertically.
+   ========================================================= */
+
+@media (max-width:1024px){
+  :root{--r-pad:42px;--r-gap:54px}
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  body{min-width:0}
+  .portfolio{width:100%!important;max-width:100%;height:auto!important;margin:0;overflow:visible!important}
+  .figma-section{width:100%!important;height:auto!important;min-height:0!important;overflow:visible!important;padding-left:var(--r-pad)!important;padding-right:var(--r-pad)!important}
+  .figma-section *{min-width:0}
+  .figma-section img,.figma-section video{max-width:100%}
+
+  /* Cover */
+  .cover{min-height:720px!important;padding:48px var(--r-pad)!important;overflow:hidden!important}
+  .cover-bg{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center!important}
+  .cover-title{font-size:clamp(92px,15vw,154px)!important;line-height:.94!important;margin-top:132px!important;white-space:nowrap!important;text-align:center!important}
+  .cover-copy{font-size:26px!important;line-height:1.35!important}
+  .cover-copy b,.cover-copy span{white-space:normal!important}
+
+  /* About */
+  .about{display:grid!important;grid-template-columns:minmax(0,.9fr) minmax(320px,1.1fr)!important;column-gap:42px!important;row-gap:28px!important;align-items:center!important}
+  .about-badge{grid-column:1/-1!important}
+  .about-title{grid-column:1!important;grid-row:2!important;font-size:clamp(74px,10vw,102px)!important;line-height:.9!important}
+  .about-photo{grid-column:2!important;grid-row:2/5!important;width:100%!important;height:auto!important;aspect-ratio:526/684!important;overflow:hidden!important;background:#f7f6f2}
+  .about-photo>img{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:100%!important;object-fit:contain!important}
+  .about-copy{grid-column:1!important;grid-row:3!important;margin:0!important}
+  .about-copy h3{font-size:28px!important;line-height:1.55!important}
+  .about-copy p{margin-top:24px!important;font-size:17px!important}
+  .about-link{grid-column:1!important;grid-row:4!important;margin:6px 0 0!important}
+
+  /* Works */
+  .works{padding-top:72px!important;overflow:visible!important}
+  .work-block{margin-bottom:104px!important}
+  .work-title{width:100%!important;max-width:520px!important}
+  .banner-slider{width:100%!important;height:auto!important;max-width:100%!important}
+  .banner-slide__image{object-fit:contain!important}
+  .poster-work{grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr)!important;align-items:start!important}
+  .poster-image{width:100%!important;height:auto!important;object-fit:contain!important}
+  .poster-copy{width:100%!important;height:auto!important;padding:20px 0 0!important}
+  .detail-cards{grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%!important;height:auto!important;align-items:start!important}
+  .detail-cards figure{width:100%!important}
+  .detail-cards figure>img,.detail-headphone{width:100%!important;height:auto!important;aspect-ratio:2/3!important;object-fit:contain!important;background:#fff}
+  .detail-headphone{overflow:hidden!important}
+  .detail-headphone img{max-width:none!important}
+  .popup-stack{max-width:900px!important}
+
+  /* Project intro — keep PC / tablet / mobile all visible. */
+  .aesop-intro,.homfit-intro{display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;column-gap:20px!important;row-gap:28px!important;align-items:start!important;padding-top:72px!important;padding-bottom:72px!important}
+  .aesop-badge,.homfit-badge{display:flex!important;grid-column:1/7!important;grid-row:1!important;justify-self:start!important}
+  .contribution{grid-column:8/13!important;grid-row:1!important;justify-self:end!important;text-align:right!important}
+  .aesop-title,.homfit-title{display:block!important;grid-column:1/6!important;grid-row:2/4!important;align-self:center!important;width:100%!important}
+  .aesop-links,.homfit-link{grid-column:1/6!important;grid-row:4!important;align-self:start!important;justify-self:start!important;margin-top:0!important}
+  .aesop-device-pc,.homfit-device-pc{display:block!important;grid-column:6/13!important;grid-row:2/4!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;overflow:visible!important;align-self:center!important}
+  .aesop-device-pad,.homfit-device-pad{display:block!important;grid-column:6/10!important;grid-row:4!important;width:100%!important;height:auto!important;max-height:none!important;object-fit:contain!important;align-self:end!important}
+  .aesop-device-mo,.homfit-device-mo{display:block!important;grid-column:10/13!important;grid-row:4!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;overflow:visible!important;object-fit:contain!important;align-self:end!important}
+  .device.image-crop>img{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:auto!important;max-width:100%!important;object-fit:contain!important}
+  .project-title h2 span{white-space:normal!important}
+  .project-title p{max-width:100%!important}
+
+  /* AESOP case — make every page image part of normal document flow. */
+  .aesop-case,.homfit-case{overflow:visible!important;align-items:stretch!important;gap:64px!important}
+  .aesop-case>.page-title{margin-top:24px!important;text-align:center!important}
+  .aesop-header-shot,.aesop-laptop-shot,.aesop-forest,.aesop-best-group,.product-list-composite,
+  .detail-pc-shot,.detail-pad-shot,.detail-mo-shot,.promo-pc-shot,.promo-mo-1,.promo-mo-2{
+    display:block!important;position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;height:auto!important;max-height:none!important;object-fit:contain!important;margin-left:auto!important;margin-right:auto!important;overflow:visible!important
+  }
+  .aesop-header-shot,.aesop-laptop-shot,.aesop-forest,.aesop-best-group,.promo-pc-shot{width:100%!important}
+  .product-list-composite{width:min(100%,717px)!important}
+  .detail-pc-shot{width:100%!important;min-height:0!important}
+  .detail-pad-shot{width:78%!important;min-height:0!important;align-self:flex-end!important}
+  .detail-mo-shot{width:38%!important;min-height:0!important;align-self:center!important}
+  .promo-mo-1,.promo-mo-2{width:38%!important}
+  .promo-mo-1{align-self:flex-start!important}.promo-mo-2{align-self:flex-end!important}
+  .aesop-case .image-crop>img{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;max-width:100%!important;object-fit:contain!important;transform:none!important}
+  .aesop-forest-video{display:none!important}
+  .note{width:100%!important;max-width:760px!important;align-self:center!important}
+  .note>div{max-width:100%!important}
+  .note p{overflow-wrap:anywhere}
+  .green-scale{gap:18px!important}
+  .aesop-color-cards{gap:28px!important}
+
+  /* HOMFIT story / design system */
+  .homfit-case{background:rgba(236,222,206,.19)!important}
+  .homfit-story-bg{display:block!important;width:100%!important;height:auto!important;object-fit:contain!important;border-radius:8px!important}
+  .story-title,.design-system-title{width:100%!important}
+  .homfit-story-copy{width:100%!important;height:auto!important;gap:24px!important;line-height:1.75!important}
+  .homfit-design-system{width:100%!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:36px!important}
+  .homfit-design-system section{width:100%!important}
+  .logos{display:grid!important;grid-template-columns:repeat(2,minmax(0,200px))!important;gap:18px!important;margin-top:34px!important}
+  .logo-light,.logo-dark{width:100%!important;max-width:200px!important}
+  .homfit-colors{grid-template-columns:repeat(2,minmax(100px,140px))!important;gap:18px!important;margin-top:34px!important}
+  .homfit-colors span{width:100%!important;height:auto!important;aspect-ratio:1!important;font-size:16px!important}
+  .responsive-heading{width:100%!important;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)!important;gap:34px!important}
+  .responsive-heading h3,.responsive-heading>div{width:100%!important}
+  .device-specs{width:100%!important;justify-content:space-around!important;gap:24px!important}
+
+  /* HOMFIT responsive demo images — no desktop crop/transform on tablet/mobile. */
+  .homfit-product-mo,.homfit-grid-pad,.homfit-hero-pad,.homfit-hero-mo,.homfit-pad4,.homfit-horizontal,.responsive-visual,.homfit-final{
+    display:block!important;position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;height:auto!important;max-height:none!important;transform:none!important;object-fit:contain!important;overflow:visible!important;margin-left:auto!important;margin-right:auto!important
+  }
+  .homfit-product-mo{width:min(38%,320px)!important;align-self:flex-end!important}
+  .homfit-grid-pad{width:min(100%,860px)!important}
+  .grid-system-label{display:block!important;width:100%!important;text-align:center!important;margin-bottom:-34px!important}
+  .grid-label-curve{display:none!important}
+  .grid-copy,.hero-copy,.swipe-copy{width:100%!important;max-width:700px!important;align-self:center!important}
+  .homfit-hero-pad{width:min(82%,720px)!important;align-self:flex-end!important}
+  .homfit-hero-mo{width:min(48%,350px)!important;min-height:0!important;align-self:flex-start!important}
+  .homfit-pad4{width:min(80%,700px)!important;align-self:flex-start!important}
+  .homfit-horizontal{width:min(44%,320px)!important;min-height:0!important;align-self:flex-end!important}
+  .homfit-case .image-crop>img{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;max-width:100%!important;object-fit:contain!important;transform:none!important}
+  .swipe-arrow{display:block!important;position:relative!important;left:auto!important;top:auto!important;width:min(50%,300px)!important;height:auto!important;align-self:center!important;transform:none!important}
+  .responsive-word,.design-word{width:100%!important;height:auto!important;text-align:center!important;white-space:normal!important;overflow-wrap:anywhere!important}
+  .responsive-visual{width:100%!important}
+  .responsive-copy{width:100%!important;text-align:right!important;padding-right:8px!important}
+  .homfit-final{width:100%!important}
+  .homfit-final-title{width:100%!important}
+
+  /* Contact: keep copy readable and overlay text anchored to the image area. */
+  .contact-section{display:grid!important;grid-template-columns:minmax(280px,.78fr) minmax(0,1.22fr)!important;grid-template-rows:auto auto 1fr!important;column-gap:38px!important;row-gap:32px!important;align-items:start!important;overflow:visible!important}
+  .contact-badge{grid-column:1/-1!important;grid-row:1!important}
+  .contact-copy{grid-column:1!important;grid-row:2!important;width:100%!important}
+  .contact-info{grid-column:1!important;grid-row:3!important;width:100%!important;align-self:end!important}
+  .contact-photo{grid-column:2!important;grid-row:2/4!important;width:100%!important;height:auto!important;aspect-ratio:1233/920!important;overflow:hidden!important;background:#e8b5aa}
+  .contact-photo>img{position:relative!important;inset:auto!important;width:100%!important;height:100%!important;max-width:100%!important;object-fit:cover!important;transform:none!important}
+  .thank,.thanks-viewing,.contact-tags,.contact-line{grid-column:2!important;grid-row:2/4!important;position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;z-index:2!important;pointer-events:none!important;justify-self:start!important;align-self:start!important;margin-left:8%!important}
+  .thank-a{margin-top:8%!important}.thank-b{margin-top:23%!important}.thanks-viewing{margin-top:46%!important}.contact-line{margin-top:72%!important}.contact-tags{margin-top:75%!important}
+  .thank{font-size:10.5vw!important;line-height:.9!important}
+  .thanks-viewing{font-size:15px!important}
+  .contact-copy-value{max-width:100%;overflow-wrap:anywhere}
+}
+
+@media (max-width:768px){
+  :root{--r-pad:28px;--r-gap:44px}
+  .figma-section{padding:60px var(--r-pad)!important}
+
+  /* Cover */
+  .cover{min-height:680px!important;padding:36px var(--r-pad)!important}
+  .cover-title{font-size:clamp(76px,19vw,140px)!important;line-height:.92!important;margin-top:126px!important;white-space:normal!important;text-align:left!important}
+  .cover-copy{font-size:22px!important;max-width:470px!important}
+  .cover-meta{left:var(--r-pad)!important;bottom:36px!important;font-size:13px!important;flex-wrap:wrap!important;max-width:58%!important}
+  .cover-name{right:var(--r-pad)!important;bottom:36px!important;font-size:13px!important}
+
+  /* About stacks vertically. */
+  .about{display:flex!important;flex-direction:column!important;gap:30px!important}
+  .about-badge{align-self:center!important}
+  .about-title{align-self:flex-start!important;font-size:clamp(66px,14vw,96px)!important}
+  .about-photo{width:min(88%,520px)!important;align-self:center!important}
+  .about-copy{width:100%!important}
+  .about-copy h3{font-size:27px!important}
+  .about-link{align-self:flex-start!important}
+
+  /* Works */
+  .works-badge{margin-bottom:50px!important}
+  .work-block{margin-bottom:88px!important}
+  .work-title{max-width:100%!important;margin-bottom:32px!important}
+  .work-title strong{font-size:76px!important}
+  .work-title h2{font-size:36px!important}
+  .work-title p{font-size:16px!important;margin-top:28px!important}
+  .banner-slide__caption{display:grid!important;gap:8px!important;font-size:15px!important}
+  .poster-work{display:flex!important;flex-direction:column!important;gap:26px!important}
+  .poster-copy{padding:0!important}
+  .poster-copy h3{font-size:34px!important;line-height:1.2!important}
+  .poster-copy>p{margin-top:32px!important;font-size:17px!important;line-height:1.7!important}
+  .poster-copy dl{margin-top:34px!important}
+  .detail-cards{grid-template-columns:1fr!important;gap:48px!important}
+  .detail-cards figcaption{gap:18px!important;font-size:17px!important}
+  .detail-cards figcaption p{line-height:1.7!important}
+  .popup-stack{max-width:470px!important;aspect-ratio:450/675!important}
+  .popup-bars{overflow-x:auto!important;justify-content:flex-start!important;padding-bottom:6px!important}
+
+  /* Project intros: title then all 3 devices, vertically. */
+  .aesop-intro,.homfit-intro{display:flex!important;flex-direction:column!important;gap:26px!important;padding-top:60px!important;padding-bottom:60px!important}
+  .aesop-badge,.homfit-badge{order:1!important;align-self:flex-start!important}
+  .aesop-title,.homfit-title{order:2!important;width:100%!important}
+  .aesop-device-pc,.homfit-device-pc{order:3!important;width:100%!important;align-self:center!important}
+  .aesop-device-pad,.homfit-device-pad{order:4!important;width:min(72%,520px)!important;align-self:center!important}
+  .aesop-device-mo,.homfit-device-mo{order:5!important;width:min(42%,280px)!important;align-self:center!important}
+  .contribution{order:6!important;align-self:flex-start!important;text-align:left!important}
+  .aesop-links,.homfit-link{order:7!important;align-self:flex-start!important;margin:0!important}
+  .project-title strong{font-size:76px!important}
+  .project-title h2{font-size:36px!important}
+  .project-title p{font-size:16px!important;line-height:1.7!important;margin-top:30px!important}
+
+  /* AESOP case */
+  .aesop-case,.homfit-case{gap:48px!important}
+  .direction-grid,.problem-grid,.goal-grid,.aesop-color-cards,.aesop-type-scale{grid-template-columns:1fr!important;gap:26px!important}
+  .direction-grid article{padding:10px 0 22px!important}
+  .goal-grid article{min-height:190px!important}
+  .redesign-word{font-size:18vw!important;text-align:center!important;overflow:hidden!important}
+  .green-scale{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important}
+  .aesop-type-sample{gap:26px!important}
+  .aesop-type-sample strong{font-size:42px!important}
+  .detail-pad-shot{width:86%!important;align-self:center!important}
+  .detail-mo-shot{width:52%!important}
+  .promo-mo-1,.promo-mo-2{width:52%!important;align-self:center!important}
+  .note{display:block!important;max-width:100%!important;margin:0!important}
+  .note>img{display:none!important}
+  .note p{font-size:16px!important;line-height:1.7!important}
+
+  /* HOMFIT case */
+  .homfit-story-copy{font-size:17px!important;line-height:1.75!important}
+  .homfit-design-system{display:flex!important;flex-direction:column!important;gap:48px!important}
+  .logos{grid-template-columns:repeat(2,minmax(0,200px))!important}
+  .homfit-colors{grid-template-columns:repeat(2,minmax(0,140px))!important;justify-content:start!important}
+  .responsive-heading{display:flex!important;flex-direction:column!important;gap:24px!important}
+  .device-specs{gap:14px!important;justify-content:space-between!important}
+  .device-specs article{width:31%!important;font-size:14px!important}
+  .device-specs img{max-width:72px!important;max-height:72px!important}
+  .homfit-product-mo{width:min(52%,300px)!important;align-self:center!important}
+  .homfit-grid-pad,.homfit-hero-pad,.homfit-pad4,.responsive-visual,.homfit-final{width:100%!important}
+  .homfit-hero-mo,.homfit-horizontal{width:min(58%,330px)!important;align-self:center!important}
+  .grid-copy h3,.hero-copy h3,.swipe-copy h3,.homfit-final-title h2{font-size:34px!important;line-height:1.25!important;letter-spacing:1.6px!important}
+  .grid-copy p,.hero-copy p,.swipe-copy p,.homfit-final-title p{font-size:17px!important;line-height:1.75!important}
+  .grid-copy p span,.hero-copy p span,.swipe-copy p span{display:block!important}
+  .swipe-arrow{width:min(68%,300px)!important}
+  .responsive-word,.design-word{font-size:17vw!important;line-height:.9!important}
+  .responsive-copy{text-align:right!important;padding-right:8px!important;font-size:14px!important}
+
+  /* Contact stacks. Image and its typography share one grid cell. */
+  .contact-section{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto auto auto auto!important;gap:34px!important}
+  .contact-badge{grid-column:1!important;grid-row:1!important}
+  .contact-copy{grid-column:1!important;grid-row:2!important}
+  .contact-info{grid-column:1!important;grid-row:3!important;align-self:start!important}
+  .contact-photo{grid-column:1!important;grid-row:4!important;width:100%!important;min-height:0!important}
+  .thank,.thanks-viewing,.contact-tags,.contact-line{grid-column:1!important;grid-row:4!important;margin-left:8%!important}
+  .thank{font-size:16vw!important}.thank-a{margin-top:8%!important}.thank-b{margin-top:26%!important}.thanks-viewing{margin-top:50%!important}.contact-line{margin-top:77%!important}.contact-tags{margin-top:81%!important}
+  .contact-copy h2{font-size:36px!important}.contact-copy p{font-size:18px!important}
+}
+
+@media (max-width:402px){
+  :root{--r-pad:18px;--r-gap:36px}
+  .figma-section{padding:52px var(--r-pad)!important}
+
+  .cover{min-height:610px!important;padding:28px var(--r-pad)!important}
+  .cover-kicker{font-size:13px!important;letter-spacing:3.8px!important}
+  .cover-title{font-size:20vw!important;margin-top:116px!important;letter-spacing:0!important}
+  .cover-copy{font-size:18px!important;line-height:1.35!important}
+  .cover-meta{left:var(--r-pad)!important;bottom:28px!important;max-width:62%!important;font-size:11px!important;gap:7px!important}
+  .cover-name{right:var(--r-pad)!important;bottom:28px!important;font-size:11px!important}
+
+  .badge{gap:10px!important;height:42px!important}.badge::after{width:42px!important;height:42px!important;flex-basis:42px!important}.badge span{font-size:13px!important;letter-spacing:3.4px!important}
+  .about-title{font-size:62px!important}.about-photo{width:100%!important}.about-copy h3{font-size:23px!important}.about-copy p{font-size:15px!important;line-height:1.75!important}.figma-link{font-size:13px!important;letter-spacing:1.8px!important}
+
+  .work-title strong,.project-title strong{font-size:64px!important}.work-title h2,.project-title h2{font-size:31px!important;letter-spacing:1px!important}.work-title p,.project-title p{font-size:15px!important}
+  .banner-slide{gap:14px!important}.banner-slide__caption{font-size:14px!important}
+  .poster-copy small{font-size:13px!important;letter-spacing:4px!important}.poster-copy h3{font-size:30px!important}.poster-copy>p{font-size:15px!important}.poster-copy dl{font-size:14px!important}
+  .detail-cards{gap:40px!important}.detail-cards figcaption{font-size:16px!important}.detail-link{margin-bottom:32px!important}
+  .popup-stack{width:100%!important;max-width:360px!important}.popup-caption{font-size:14px!important}
+
+  .aesop-intro,.homfit-intro{gap:22px!important}.aesop-device-pad,.homfit-device-pad{width:82%!important}.aesop-device-mo,.homfit-device-mo{width:52%!important}.contribution{font-size:12px!important}
+  .project-title h2 b,.project-title h2 span{display:block!important}
+
+  .side-title,.homfit-section-title{font-size:25px!important;line-height:1.3!important}.direction-grid p,.problem-grid article,.goal-grid article,.color-lead,.type-lead{font-size:15px!important}.green-scale{grid-template-columns:repeat(2,minmax(0,1fr))!important}.green-scale span{font-size:12px!important}.aesop-type-sample strong{font-size:34px!important}.page-title{font-size:27px!important;text-align:center!important}
+  .product-list-composite{width:100%!important}.detail-mo-shot,.promo-mo-1,.promo-mo-2{width:64%!important}
+
+  .homfit-story-copy{font-size:15px!important;gap:18px!important}.homfit-design-system h3{font-size:18px!important}.homfit-design-system p{font-size:15px!important;line-height:1.75!important}.logos{grid-template-columns:1fr!important;justify-items:start!important}.logo-light,.logo-dark{width:200px!important}.homfit-colors{grid-template-columns:repeat(2,minmax(0,1fr))!important;width:100%!important}.homfit-colors span{font-size:13px!important}
+  .responsive-heading h3{font-size:26px!important}.responsive-heading>div{font-size:15px!important}.device-specs{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px!important}.device-specs article{width:auto!important;font-size:12px!important}.device-specs img{max-width:56px!important;max-height:56px!important}
+  .homfit-product-mo{width:68%!important}.homfit-hero-mo,.homfit-horizontal{width:72%!important}.grid-copy h3,.hero-copy h3,.swipe-copy h3,.homfit-final-title h2{font-size:29px!important}.grid-copy p,.hero-copy p,.swipe-copy p,.homfit-final-title p{font-size:15px!important}.grid-copy dl,.hero-copy dl{font-size:14px!important}.grid-copy dl div,.hero-copy dl div{grid-template-columns:95px 1fr!important}
+  .responsive-word,.design-word{font-size:18vw!important}.responsive-copy{font-size:13px!important;line-height:1.6!important;padding-right:8px!important}
+
+  .contact-copy h2{font-size:31px!important;letter-spacing:1.7px!important}.contact-copy p{font-size:16px!important}.contact-info h3{font-size:21px!important}.contact-info dd{font-size:16px!important}.thank{font-size:17vw!important}.thanks-viewing{font-size:11px!important;letter-spacing:3.2px!important}.contact-tags{font-size:10px!important;gap:8px!important}.contact-line{width:34px!important}
+
+  .resume-modal{padding:10px!important}.resume-modal__dialog,.detail-modal__dialog{width:100%!important;max-width:100%!important}
+}
+
+/* =========================================================
+   v51 — RESPONSIVE TYPE SCALE + COMPACT MEDIA/BUTTONS
+   Tablet: 1024px
+   Mobile: 768px / 402px
+   ========================================================= */
+
+/* BEFORE SITE: entire control uses the requested neutral gray. */
+.aesop-links .figma-link:first-child{
+  color:#6D6D6A!important;
+  border-bottom-color:#6D6D6A!important;
+}
+.aesop-links .figma-link:first-child img{display:none!important}
+.aesop-links .figma-link:first-child::after{
+  content:"↗";
+  display:inline-block;
+  color:#6D6D6A;
+  font-size:1.35em;
+  font-weight:400;
+  line-height:1;
+  transform:translateY(-1px);
+}
+
+@media (max-width:1024px){
+  :root{
+    --tab-h1:29px;
+    --tab-h2:24px;
+    --tab-h3:20px;
+    --tab-h4:17px;
+    --tab-body1:14px;
+    --tab-body2:12px;
+    --tab-detail:10px;
+  }
+
+  /* Main content typography follows the tablet scale. Decorative display type
+     (cover title, section numbers, RESPONSIVE/DESIGN words) stays graphic. */
+  .work-title h2,.project-title h2,.side-title,.homfit-section-title,
+  .responsive-heading h3,.grid-copy h3,.hero-copy h3,.swipe-copy h3,
+  .homfit-final-title h2,.page-title,.contact-copy h2{
+    font-size:var(--tab-h1)!important;
+    line-height:1.28!important;
+  }
+  .about-copy h3,.aesop-type-sample strong{
+    font-size:var(--tab-h2)!important;
+    line-height:1.3!important;
+  }
+  .poster-copy h3,.homfit-design-system h3,.direction-grid article>b,
+  .problem-grid article>b,.goal-grid article>b,.goal-grid article>strong,
+  .aesop-color-cards article>div:last-child>b,.note b,.contact-info h3{
+    font-size:var(--tab-h3)!important;
+    line-height:1.35!important;
+  }
+  .direction-grid article>strong,.detail-cards figcaption>b,
+  .banner-slide__caption>b,.responsive-heading>div>b{
+    font-size:var(--tab-h4)!important;
+    line-height:1.35!important;
+  }
+
+  .work-title p,.project-title p,.about-copy p,.direction-grid p,
+  .problem-grid p,.goal-grid article,.color-lead,.type-lead,
+  .aesop-color-cards article>div:last-child p,.homfit-story-copy,
+  .homfit-design-system p,.grid-copy p,.hero-copy p,.swipe-copy p,
+  .homfit-final-title p,.note p,.contact-copy p{
+    font-size:var(--tab-body1)!important;
+    line-height:1.4!important;
+  }
+  .contribution,.green-scale span,.device-specs article,
+  .grid-copy dl,.hero-copy dl,.poster-copy dl,.banner-slide__caption,
+  .detail-cards figcaption,.popup-caption,.responsive-copy,
+  .contact-info dt,.contact-info dd{
+    font-size:var(--tab-body2)!important;
+    line-height:1.4!important;
+  }
+  .poster-copy small,.note small,.thanks-viewing,.contact-tags{
+    font-size:var(--tab-detail)!important;
+  }
+
+  /* Typography specimen: exact h1 ~ dt tablet sizes from the supplied scale. */
+  .aesop-type-scale p{line-height:1!important}
+  .aesop-type-scale p:nth-child(1){font-size:29px!important}
+  .aesop-type-scale p:nth-child(2){font-size:24px!important}
+  .aesop-type-scale p:nth-child(3){font-size:20px!important}
+  .aesop-type-scale p:nth-child(4){font-size:17px!important}
+  .aesop-type-scale p:nth-child(5){font-size:14px!important;line-height:1.4!important}
+  .aesop-type-scale p:nth-child(6){font-size:12px!important;line-height:1.4!important}
+  .aesop-type-scale p:nth-child(7){font-size:10px!important}
+  .aesop-type-scale p b,.aesop-type-scale p span{font-size:inherit!important;line-height:inherit!important}
+
+  /* Smaller responsive controls. */
+  .figma-link,.detail-link{
+    font-size:12px!important;
+    line-height:18px!important;
+    letter-spacing:1.7px!important;
+    gap:6px!important;
+    padding:3px 5px!important;
+  }
+  .figma-link img,.detail-link img{width:18px!important;height:18px!important}
+  .aesop-links{gap:22px!important}
+
+  /* Images should breathe inside tablet width instead of filling every edge. */
+  .aesop-device-pc,.homfit-device-pc{width:min(92%,600px)!important;justify-self:center!important}
+  .aesop-device-pad,.homfit-device-pad{width:min(86%,420px)!important;justify-self:center!important}
+  .aesop-device-mo,.homfit-device-mo{width:min(78%,240px)!important;justify-self:center!important}
+  .aesop-header-shot,.aesop-laptop-shot,.aesop-forest,.aesop-best-group,.promo-pc-shot,
+  .homfit-grid-pad,.homfit-hero-pad,.homfit-pad4,.responsive-visual,.homfit-final{
+    width:min(92%,880px)!important;
+  }
+  .product-list-composite{width:min(82%,650px)!important}
+  .detail-pc-shot{width:min(92%,860px)!important}
+  .detail-pad-shot{width:min(72%,640px)!important}
+  .detail-mo-shot,.promo-mo-1,.promo-mo-2{width:min(34%,250px)!important}
+  .homfit-product-mo{width:min(34%,260px)!important}
+  .homfit-hero-mo,.homfit-horizontal{width:min(38%,300px)!important}
+}
+
+@media (max-width:768px){
+  :root{
+    --mo-h1:19px;
+    --mo-h2:17px;
+    --mo-h3:15px;
+    --mo-h4:14px;
+    --mo-body1:12px;
+    --mo-body2:11px;
+    --mo-detail:10px;
+  }
+
+  .work-title h2,.project-title h2,.side-title,.homfit-section-title,
+  .responsive-heading h3,.grid-copy h3,.hero-copy h3,.swipe-copy h3,
+  .homfit-final-title h2,.page-title,.contact-copy h2{
+    font-size:var(--mo-h1)!important;
+    line-height:1.28!important;
+  }
+  .about-copy h3,.aesop-type-sample strong{
+    font-size:var(--mo-h2)!important;
+    line-height:1.3!important;
+  }
+  .poster-copy h3,.homfit-design-system h3,.direction-grid article>b,
+  .problem-grid article>b,.goal-grid article>b,.goal-grid article>strong,
+  .aesop-color-cards article>div:last-child>b,.note b,.contact-info h3{
+    font-size:var(--mo-h3)!important;
+    line-height:1.35!important;
+  }
+  .direction-grid article>strong,.detail-cards figcaption>b,
+  .banner-slide__caption>b,.responsive-heading>div>b{
+    font-size:var(--mo-h4)!important;
+    line-height:1.35!important;
+  }
+
+  .work-title p,.project-title p,.about-copy p,.direction-grid p,
+  .problem-grid p,.goal-grid article,.color-lead,.type-lead,
+  .aesop-color-cards article>div:last-child p,.homfit-story-copy,
+  .homfit-design-system p,.grid-copy p,.hero-copy p,.swipe-copy p,
+  .homfit-final-title p,.note p,.contact-copy p{
+    font-size:var(--mo-body1)!important;
+    line-height:1.4!important;
+  }
+  .contribution,.green-scale span,.device-specs article,
+  .grid-copy dl,.hero-copy dl,.poster-copy dl,.banner-slide__caption,
+  .detail-cards figcaption,.popup-caption,.responsive-copy,
+  .contact-info dt,.contact-info dd{
+    font-size:var(--mo-body2)!important;
+    line-height:1.4!important;
+  }
+  .poster-copy small,.note small,.thanks-viewing,.contact-tags{
+    font-size:var(--mo-detail)!important;
+  }
+
+  /* Typography specimen: exact mobile scale (same for 768 / 402). */
+  .aesop-type-scale p:nth-child(1){font-size:19px!important}
+  .aesop-type-scale p:nth-child(2){font-size:17px!important}
+  .aesop-type-scale p:nth-child(3){font-size:15px!important}
+  .aesop-type-scale p:nth-child(4){font-size:14px!important}
+  .aesop-type-scale p:nth-child(5){font-size:12px!important;line-height:1.4!important}
+  .aesop-type-scale p:nth-child(6){font-size:11px!important;line-height:1.4!important}
+  .aesop-type-scale p:nth-child(7){font-size:10px!important}
+
+  .figma-link,.detail-link{
+    font-size:11px!important;
+    line-height:16px!important;
+    letter-spacing:1.45px!important;
+    gap:5px!important;
+    padding:2px 4px!important;
+  }
+  .figma-link img,.detail-link img{width:16px!important;height:16px!important}
+  .aesop-links{gap:18px!important}
+
+  /* More compact media while keeping every image visible. */
+  .aesop-device-pc,.homfit-device-pc{width:min(90%,620px)!important}
+  .aesop-device-pad,.homfit-device-pad{width:min(62%,430px)!important}
+  .aesop-device-mo,.homfit-device-mo{width:min(32%,210px)!important}
+  .aesop-header-shot,.aesop-laptop-shot,.aesop-forest,.aesop-best-group,.promo-pc-shot,
+  .homfit-grid-pad,.homfit-hero-pad,.homfit-pad4,.responsive-visual,.homfit-final{
+    width:min(90%,760px)!important;
+  }
+  .product-list-composite{width:min(78%,560px)!important}
+  .detail-pc-shot{width:min(90%,720px)!important}
+  .detail-pad-shot{width:min(70%,540px)!important}
+  .detail-mo-shot,.promo-mo-1,.promo-mo-2{width:min(40%,240px)!important}
+  .homfit-product-mo{width:min(44%,260px)!important}
+  .homfit-hero-mo,.homfit-horizontal{width:min(48%,290px)!important}
+
+  .direction-grid img{max-width:68px!important;max-height:68px!important}
+  .goal-arrow{width:18px!important;height:auto!important}
+  .device-specs img{max-width:56px!important;max-height:56px!important}
+}
+
+@media (max-width:402px){
+  /* Typography remains the same mobile scale; only visual footprint tightens. */
+  .figma-link,.detail-link{
+    font-size:10px!important;
+    line-height:15px!important;
+    letter-spacing:1.25px!important;
+    gap:4px!important;
+    padding:2px 3px!important;
+  }
+  .figma-link img,.detail-link img{width:14px!important;height:14px!important}
+  .aesop-links{gap:14px!important}
+  .aesop-links .figma-link:first-child::after{font-size:14px}
+
+  .aesop-device-pc,.homfit-device-pc{width:94%!important}
+  .aesop-device-pad,.homfit-device-pad{width:66%!important}
+  .aesop-device-mo,.homfit-device-mo{width:34%!important}
+  .aesop-header-shot,.aesop-laptop-shot,.aesop-forest,.aesop-best-group,.promo-pc-shot,
+  .homfit-grid-pad,.homfit-hero-pad,.homfit-pad4,.responsive-visual,.homfit-final{
+    width:94%!important;
+  }
+  .product-list-composite{width:88%!important}
+  .detail-pc-shot{width:94%!important}
+  .detail-pad-shot{width:76%!important}
+  .detail-mo-shot,.promo-mo-1,.promo-mo-2{width:46%!important}
+  .homfit-product-mo{width:52%!important}
+  .homfit-hero-mo,.homfit-horizontal{width:56%!important}
+  .direction-grid img{max-width:58px!important;max-height:58px!important}
+  .device-specs img{max-width:48px!important;max-height:48px!important}
+}
