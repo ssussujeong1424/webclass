@@ -1265,7 +1265,7 @@ body.detail-modal-open{overflow:hidden}
   [data-aesop-new-spread],
   [data-aesop-new-copy],
   [data-aesop-hero-circle],
-  [data-aesop-hero-spread]{
+  [data-aesop-hero-slide]{
     will-change:opacity,clip-path,transform;
   }
 }
@@ -1273,7 +1273,7 @@ body.detail-modal-open{overflow:hidden}
   [data-aesop-new-spread],
   [data-aesop-new-copy],
   [data-aesop-hero-circle],
-  [data-aesop-hero-spread]{
+  [data-aesop-hero-slide]{
     opacity:1!important;
     clip-path:none!important;
   }
@@ -1300,6 +1300,27 @@ body.detail-modal-open{overflow:hidden}
 @media (max-width:1200px){
   .aesop-forest-video{display:none!important}
 }
-@media (prefers-reduced-motion:reduce){
-  .aesop-forest-video{display:none!important}
+
+
+/* v46 — requested patch from v42 only:
+   1) AESOP hero description slides left -> right.
+   2) HOMFIT Brand Story image/text reveal from the center outward.
+   3) AESOP Forest video stays visible and autoplay-safe on desktop. */
+@media (min-width:1201px){
+  [data-aesop-hero-slide],
+  [data-homfit-story-reveal]{
+    will-change:transform,opacity,clip-path;
+  }
+
+  .aesop-forest-video{
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    z-index:5!important;
+  }
+}
+
+/* The user explicitly wants this video even when reduced-motion is enabled. */
+@media (min-width:1201px) and (prefers-reduced-motion:reduce){
+  .aesop-forest-video{display:block!important;visibility:visible!important;opacity:1!important}
 }

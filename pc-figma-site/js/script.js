@@ -184,6 +184,7 @@
 
   const configs = [
     { selector: '[data-device-reveal="aesop"]', root: '#aesop', play: revealAesop },
+    { selector: '[data-device-reveal="homfit"]', root: '#homfit', play: revealAesop },
     { selector: '[data-device-reveal="responsive"]', root: '.responsive-visual', play: revealCenter }
   ];
 
@@ -1153,7 +1154,7 @@ if (statusbar) {
 
   // Hero banner: left circle + its copy + right circle expand from the center at the same time.
   const heroCircles = Array.from(document.querySelectorAll('[data-aesop-hero-circle]'));
-  const heroCopy = document.querySelector('[data-aesop-hero-spread]');
+  const heroCopy = document.querySelector('[data-aesop-hero-slide]');
   const heroTarget = document.querySelector('.aesop-laptop-shot') || heroCopy;
   observeOnce(heroTarget, () => {
     heroCircles.forEach((el) => {
@@ -1172,13 +1173,80 @@ if (statusbar) {
     if (heroCopy && heroCopy.dataset.v38Played !== 'true') {
       heroCopy.dataset.v38Played = 'true';
       heroCopy.animate([
-        { opacity: 0, clipPath: 'inset(0 50% 0 50%)', transform: 'scale(.97)' },
-        { opacity: 1, clipPath: 'inset(0 0 0 0)', transform: 'scale(1)' }
+        { opacity: 0, transform: 'translate3d(-72px,0,0)' },
+        { opacity: 1, transform: 'translate3d(0,0,0)' }
       ], {
-        duration: 1750,
+        duration: 1650,
         easing: 'cubic-bezier(.16,1,.3,1)',
         fill: 'both'
       });
     }
   });
+})();
+
+
+// v46 — HOMFIT Brand Story center-out reveal + robust AESOP video playback.
+(function initRequestedV46Patch(){
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function observeOnce(target, play){
+    if (!target) return;
+    if (!('IntersectionObserver' in window)) { play(); return; }
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      io.disconnect();
+      play();
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+    io.observe(target);
+  }
+
+  // Brand Story: base content remains visible; animation is applied only when it can run.
+  const storyItems = Array.from(document.querySelectorAll('[data-homfit-story-reveal]'));
+  if (storyItems.length && !reduceMotion && typeof storyItems[0].animate === 'function') {
+    observeOnce(storyItems[0], () => {
+      storyItems.forEach((el, index) => {
+        if (el.dataset.v46Played === 'true') return;
+        el.dataset.v46Played = 'true';
+        el.animate([
+          { opacity: 0, clipPath: 'inset(0 50% 0 50%)', transform: 'scaleX(.96)' },
+          { opacity: 1, clipPath: 'inset(0 0 0 0)', transform: 'scaleX(1)' }
+        ], {
+          duration: 1650,
+          delay: index * 90,
+          easing: 'cubic-bezier(.16,1,.3,1)',
+          fill: 'both'
+        });
+      });
+    });
+  }
+
+  // Video: force the HTML autoplay-safe state in JS too, then retry when media/page becomes ready.
+  const forestVideo = document.querySelector('[data-aesop-forest-video]');
+  if (forestVideo) {
+    forestVideo.muted = true;
+    forestVideo.defaultMuted = true;
+    forestVideo.autoplay = true;
+    forestVideo.loop = true;
+    forestVideo.playsInline = true;
+    forestVideo.volume = 0;
+
+    const tryPlay = () => {
+      try {
+        const promise = forestVideo.play();
+        if (promise && typeof promise.catch === 'function') promise.catch(() => {});
+      } catch (_) {}
+    };
+
+    // Force a fresh media load so replacing the mp4 in an existing project also takes effect.
+    try { forestVideo.load(); } catch (_) {}
+    if (forestVideo.readyState >= 2) tryPlay();
+    forestVideo.addEventListener('loadeddata', tryPlay, { once: true });
+    forestVideo.addEventListener('canplay', tryPlay, { once: true });
+    setTimeout(tryPlay, 250);
+    setTimeout(tryPlay, 1000);
+    window.addEventListener('pageshow', tryPlay);
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) tryPlay();
+    });
+  }
 })();
